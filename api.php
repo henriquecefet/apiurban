@@ -2,8 +2,9 @@
 	$cidade = $_GET['cidade'];
 	lerCidade($cidade);
 	lerClima($cidade);
+
 	function lerCidade($cidade){
-		$url  = "https://urbanweb.herokuapp.com/apilerhotspot.php?nome=".$cidade;
+		$url  = "https://urbanweb.herokuapp.com/apilerhotspot.php?nome=".urlencode($cidade);;
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -15,7 +16,7 @@
 		echo "<br>";
 	}
 	function lerClima($cidade){
-		$url  = "https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=".$cidade;
+		$url  = "https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=".urlencode($cidade);;
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
