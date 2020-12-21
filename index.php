@@ -10,7 +10,7 @@ function pegarHotspots($cidade){
 	$result=curl_exec($ch);
 	curl_close($ch);
 	$dados = json_decode($result, true);
-	echo $dados;
+	echo $dados['hotspots'][0]['nome'];
 }
 
 ?>
