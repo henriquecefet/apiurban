@@ -1,9 +1,8 @@
 <?php
 $cidade = $_GET['cidade'];
-echo $cidade;
 pegarHotspots($cidade);
-function pegarHotspots($lugar){
-	$url  = "https://urbanweb.herokuapp.com/apilerhotspot.php?nome=".$lugar;
+function pegarHotspots($cidade){
+	$url  = "https://urbanweb.herokuapp.com/apilerhotspot.php?nome=".$cidade;
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -11,7 +10,7 @@ function pegarHotspots($lugar){
 	$result=curl_exec($ch);
 	curl_close($ch);
 	$dados = json_decode($result, true);
-	echo $dados['hotspots'][0]['nome'];
+	echo '<pre>'; print_r($dados); echo '</pre>';
 }
 
 ?>
