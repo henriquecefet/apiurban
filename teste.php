@@ -1,7 +1,5 @@
 <?php
 	$cidade = $_GET['cidade'];
-	lerCidade($cidade);
-	lerClima($cidade);
 	$hotspots = lerJSON("https://urbanweb.herokuapp.com/apilerhotspot.php?nome=", $cidade);
 	$tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $cidade);
 	echo '<pre>'; print_r($hotspots); echo '</pre>'; echo "<br>";
