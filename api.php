@@ -4,9 +4,13 @@
 	$tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $cidade);
 	$recomendacaoHoje  = "";
 	for($i = 0; $i < count($hotspots["hotspot"]); $i++){
+		$hoje = array();
+		array_push($hoje, $tempo["results"]["date"]);
+		array_push($hoje, $tempo["results"]["description"]);
 		if($hotspots["hotspot"][$i]["ar-livre"] == t){
 			if($tempo["results"]["description"] == "Tempestestades" || $tempo["results"]["description"] == "Tempestestades Isoldas"){
-				$recomendacaoHoje = "Não recomendado";
+				$recomendacaoHoje = "Nao recomendado";
+
 			}
 			elseif($tempo["results"]["description"] == "Tempo nublado" || $tempo["results"]["description"] == "Trovoadas Dispersas") {
 				$recomendacaoHoje  = "Pouco recomendado";
@@ -16,11 +20,19 @@
 			$recomendacaoHoje  = "Recomendado";
 		}
 		$previsao = array();
-		$hotspots["hotspot"][$i]["recomedacao"] = $recomendacaoHoje;
-		for($j = 0; $j < count($tempo["results"]["forecast"]); $j++){
+		array_push($hoje, $recomendacaoHoje);
+		$hotspots["hotspot"][$i]["recomedacao"] = $hoje;
+		for($j = 1; $j < count($tempo["results"]["forecast"]); $j++){
+			$previsaoData = array();
+			$diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
+			$descricao = $tempo["results"]["forecast"][$j]["description"];
+			array_push($previsaoData, $diaSemana." (".$data.")");
+			array_push($previsaoData, $descricao);
 			if($hotspots["hotspot"][$i]["ar-livre"] == t){
 				if($tempo["results"]["forecast"][$j]["condition"] == "storm" ){
-					array_push($previsao, "Não recomendado");
+					$data = $tempo["results"]["forecast"][$j]["date"];
+					array_push($previsaoData, "Nao recomendado");
+
 				}
 				elseif($tempo["results"]["forecast"][$j]["condition"] == "cloud" ||  $tempo["results"]["forecast"][$j]["condition"] == "cloudly_day" ){
 					array_push($previsao, "Pouco recomendado");
