@@ -1,5 +1,5 @@
 <?php
-	hotspotsClima()
+	hotspotsClima();
 	function hotspotsClima(){
 		$cidade = $_GET['cidade'];
 		$hotspots = lerJSON("https://urbanweb.herokuapp.com/apilerhotspot.php?nome=", $cidade);
