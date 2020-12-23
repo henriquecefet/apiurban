@@ -23,7 +23,7 @@
 		$previsao = array();
 		array_push($hoje, $recomendacaoHoje);
 		$hotspots["hotspot"][$i]["recomedacao"] = $hoje;
-		for($j = 1; $j < count($tempo["results"]["forecast"]); $j++){
+		for($j = 0; $j < count($tempo["results"]["forecast"]); $j++){
 			$previsaoData = array();
 			$diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
 			$descricao = $tempo["results"]["forecast"][$j]["description"];
