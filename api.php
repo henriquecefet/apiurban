@@ -20,14 +20,14 @@
 		for($j = 0; $j < count($tempo["results"]["forecast"]); $j++){
 			if($hotspots["hotspot"][$i]["ar-livre"] == t){
 				if($tempo["results"]["forecast"][$j]["condition"] == "storm" ){
-					array.push($previsao, "Não recomendado");
+					array_push($previsao, "Não recomendado");
 				}
 				elseif($tempo["results"]["forecast"][$j]["condition"] == "cloud" ||  $tempo["results"]["forecast"][$j]["condition"] == "cloudly_day" ){
-					array.push($previsao, "Pouco recomendado");
+					array_push($previsao, "Pouco recomendado");
 				}
 			}
 			else{
-				array.push($previsao, "Recomendado");
+				array_push($previsao, "Recomendado");
 			}
 		}
 		$hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsao;
