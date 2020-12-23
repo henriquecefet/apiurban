@@ -43,9 +43,9 @@
 			else{
 				array_push($previsaoData, "Recomendado");
 			}
-			$hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsaoData;
+			array_push($previsao, $previsaoData);
 		}
-		
+		$hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsao;
 	}
 	echo json_encode($hotspots);
 	function lerJSON($link, $cidade){
