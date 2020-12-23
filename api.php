@@ -35,14 +35,14 @@
 
 				}
 				elseif($tempo["results"]["forecast"][$j]["condition"] == "cloud" ||  $tempo["results"]["forecast"][$j]["condition"] == "cloudly_day" ){
-					array_push($previsao, "Pouco recomendado");
+					array_push($previsaoData, "Pouco recomendado");
 				}
 			}
 			else{
-				array_push($previsao, "Recomendado");
+				array_push($previsaoData, "Recomendado");
 			}
 		}
-		$hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsao;
+		$hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsaoData;
 	}
 	echo json_encode($hotspots);
 	function lerJSON($link, $cidade){
