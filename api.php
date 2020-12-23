@@ -8,11 +8,11 @@
 		array_push($hoje, $tempo["results"]["date"]);
 		array_push($hoje, $tempo["results"]["description"]);
 		if($hotspots["hotspot"][$i]["ar-livre"] == t){
-			if($tempo["results"]["description"] == "Tempestestades" || $tempo["results"]["description"] == "Tempestestades Isoldas"){
+			if($tempo["results"]["forecast"][0]["condition"] == "storm"{
 				$recomendacaoHoje = "Nao recomendado";
 
 			}
-			elseif($tempo["results"]["description"] == "Tempo nublado" || $tempo["results"]["description"] == "Trovoadas Dispersas") {
+			elseif($tempo["results"]["forecast"][0]["condition"] ==  "cloud" || $tempo["results"]["forecast"][0]["condition"] == "cloudly_day") {
 				$recomendacaoHoje  = "Pouco recomendado";
 			}
 		}
