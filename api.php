@@ -1,5 +1,4 @@
 <?php
-	header('Content-Type: text/html; charset=utf-8');
 	$cidade = $_GET['cidade'];
 	$hotspots = lerJSON("https://urbanweb.herokuapp.com/apilerhotspot.php?nome=", $cidade);
 	$tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $cidade);
@@ -27,6 +26,9 @@
 		for($j = 1; $j < count($tempo["results"]["forecast"]); $j++){
 			$previsaoData = array();
 			$diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
+			if($diaSemana == "Sáb"){
+				$diaSemana = str_replace("Sáb", "Sab",$diaSemana);
+			}
 			$descricao = $tempo["results"]["forecast"][$j]["description"];
 			array_push($previsaoData, $diaSemana." (".$data.")");
 			array_push($previsaoData, $descricao);
