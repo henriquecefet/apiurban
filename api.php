@@ -8,11 +8,12 @@
 		array_push($hoje, $tempo["results"]["date"]);
 		array_push($hoje, $tempo["results"]["description"]);
 		if($hotspots["hotspot"][$i]["ar-livre"] == t){
-			if($tempo["results"]["forecast"][0]["condition"] == "storm"{
+			$condicaoHoje = $tempo["results"]["forecast"][0]["condition"];
+			if($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain" ){
 				$recomendacaoHoje = "Nao recomendado";
 
 			}
-			elseif($tempo["results"]["forecast"][0]["condition"] ==  "cloud" || $tempo["results"]["forecast"][0]["condition"] == "cloudly_day") {
+			elseif($condicaoHoje =="cloud" || $condicaoHoje =="cloudly_day"||$condicaoHoje =="fog"|| $condicaoHoje=="cloudly_night" ) {
 				$recomendacaoHoje  = "Pouco recomendado";
 			}
 		}
@@ -29,12 +30,13 @@
 			array_push($previsaoData, $diaSemana." (".$data.")");
 			array_push($previsaoData, $descricao);
 			if($hotspots["hotspot"][$i]["ar-livre"] == t){
-				if($tempo["results"]["forecast"][$j]["condition"] == "storm" ){
+				$condicao = $tempo["results"]["forecast"][$j]["condition"];
+				if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
 					$data = $tempo["results"]["forecast"][$j]["date"];
 					array_push($previsaoData, "Nao recomendado");
 
 				}
-				elseif($tempo["results"]["forecast"][$j]["condition"] == "cloud" ||  $tempo["results"]["forecast"][$j]["condition"] == "cloudly_day" ){
+				elseif($condicao == "cloud" ||  $condicao == "cloudly_day" || $condicao == "fog" ||  $condicao == "cloudly_night" ){
 					array_push($previsaoData, "Pouco recomendado");
 				}
 			}
