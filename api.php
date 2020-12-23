@@ -23,14 +23,14 @@
 		$previsao = array();
 		array_push($hoje, $recomendacaoHoje);
 		$hotspots["hotspot"][$i]["recomedacao"] = $hoje;
-		for($j = 0; $j < count($tempo["results"]["forecast"]); $j++){
+		for($j = 1; $j < count($tempo["results"]["forecast"]); $j++){
 			$previsaoData = array();
 			$diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
 			$descricao = $tempo["results"]["forecast"][$j]["description"];
 			array_push($previsaoData, $diaSemana." (".$data.")");
 			array_push($previsaoData, $descricao);
-			if($hotspots["hotspot"][$i]["ar-livre"] == t){
-				$condicao = $tempo["results"]["forecast"][$j]["condition"];
+			$condicao = $tempo["results"]["forecast"][$j]["condition"];
+			if($hotspots["hotspot"][$i]["ar-livre"] == t){	
 				if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
 					$data = $tempo["results"]["forecast"][$j]["date"];
 					array_push($previsaoData, "Nao recomendado");
