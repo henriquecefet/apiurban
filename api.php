@@ -17,7 +17,7 @@
 		}
 		$previsao = array();
 		$hotspots["hotspot"][$i]["recomedacao"] = $recomendacaoHoje;
-		for($j = 0; $j < count($tempo["results"]["forecast"])){
+		for($j = 0; $j < count($tempo["results"]["forecast"]; $j++)){
 			if($hotspots["hotspot"][$i]["ar-livre"] == t){
 				if($tempo["results"]["forecast"][$j]["condition"] == "storm" ){
 					array.push($previsao, "Não recomendado");
