@@ -26,9 +26,11 @@
 					array.push($previsao, "Pouco recomendado");
 				}
 			}
-		}else{
-			array.push($previsao, "Recomendado");
+			else{
+				array.push($previsao, "Recomendado");
+			}
 		}
+
 	}
 	echo json_encode($hotspots);
 	function lerJSON($link, $cidade){
