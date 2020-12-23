@@ -17,12 +17,13 @@
 		}
 		$previsao = array();
 		$hotspots["hotspot"][$i]["recomedacao"] = $recomendacaoHoje;
-		for($j = 0; $j < count($tempo["results"]["forecast"]; $j++)){
+		try{
+			for($j = 0; $j < count($tempo["results"]["forecast"]; $j++)){
 			if($hotspots["hotspot"][$i]["ar-livre"] == t){
 				if($tempo["results"]["forecast"][$j]["condition"] == "storm" ){
 					array.push($previsao, "Não recomendado");
 				}
-				if($tempo["results"]["forecast"][$j]["condition"] == "cloud" ||  $tempo["results"]["forecast"][$j]["condition"] == "cloudly_day" ){
+				elseif($tempo["results"]["forecast"][$j]["condition"] == "cloud" ||  $tempo["results"]["forecast"][$j]["condition"] == "cloudly_day" ){
 					array.push($previsao, "Pouco recomendado");
 				}
 			}
@@ -30,7 +31,11 @@
 				array.push($previsao, "Recomendado");
 			}
 		}
-
+			$hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsao;
+		}catch(Exception $e){
+			echo $e->getMessage();
+		}
+		
 	}
 	echo json_encode($hotspots);
 	function lerJSON($link, $cidade){
