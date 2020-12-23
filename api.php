@@ -15,7 +15,20 @@
 		else{
 			$recomendacaoHoje  = "Recomendado";
 		}
+		$previsao = array();
 		$hotspots["hotspot"][$i]["recomedacao"] = $recomendacaoHoje;
+		for($j = 0; $j < count($tempo["results"]["forecast"])){
+			if($hotspots["hotspot"][$i]["ar-livre"] == t){
+				if($tempo["results"]["forecast"][$j]["condition"] == "storm" ){
+					array.push($previsao, "Não recomendado");
+				}
+				if($tempo["results"]["forecast"][$j]["condition"] == "cloud" ||  $tempo["results"]["forecast"][$j]["condition"] == "cloudly_day" ){
+					array.push($previsao, "Pouco recomendado");
+				}
+			}
+		}else{
+			array.push($previsao, "Recomendado");
+		}
 	}
 	echo json_encode($hotspots);
 	function lerJSON($link, $cidade){
