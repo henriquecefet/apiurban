@@ -27,7 +27,7 @@
                $recomendacaoHoje  = "Pouco recomendado";
             }
          }
-         else{
+         elseif($hotspot[0]["ar-livre"] == f){
             $recomendacaoHoje  = "Recomendado";
          }
          $previsao = array();
