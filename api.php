@@ -64,14 +64,13 @@
    }
 
    function retornaHotspot(){
-        $nome = $_GET['nome'];
+        $nome = $_GET["nome"];
         $hotspot = lerJSON("https://urbanweb.herokuapp.com/apilerumhotspot.php?nome=", $nome);
         $tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $hotspot[0]["cidade"]);
         $recomendacaoHoje  = "";
         $hoje = array();
         array_push($hoje, $tempo["results"]["date"]);
         array_push($hoje, $tempo["results"]["description"]);
-        echo $hotspot[0]["ar-livre"];
         if($hotspot[0]["ar-livre"] == t){
             $condicaoHoje = $tempo["results"]["forecast"][0]["condition"];
             if($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain" ){
