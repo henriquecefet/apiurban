@@ -40,12 +40,12 @@
                $diaSemana = str_replace("Sáb", "Sab",$diaSemana);
             }
             $descricao = $tempo["results"]["forecast"][$j]["description"];
+            $data = $tempo["results"]["forecast"][$j]["date"];
             array_push($previsaoData, $diaSemana." (".$data.")");
             array_push($previsaoData, $descricao);
             $condicao = $tempo["results"]["forecast"][$j]["condition"];
             if($hotspots["hotspot"][$i]["ar-livre"] == t){ 
                if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
-                  $data = $tempo["results"]["forecast"][$j]["date"];
                   array_push($previsaoData, "Nao recomendado");
 
                }
@@ -94,12 +94,12 @@
                 $diaSemana = str_replace("Sáb", "Sab",$diaSemana);
             }
             $descricao = $tempo["results"]["forecast"][$j]["description"];
+            $data = $tempo["results"]["forecast"][$j]["date"];
             array_push($previsaoData, $diaSemana." (".$data.")");
             array_push($previsaoData, $descricao);
             $condicao = $tempo["results"]["forecast"][$j]["condition"];
             if($hotspot[0]["ar-livre"] == t){
                 if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
-                    $data = $tempo["results"]["forecast"][$j]["date"];
                     array_push($previsaoData, "Nao recomendado");
 
                 }
