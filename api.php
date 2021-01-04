@@ -112,7 +112,7 @@
             }
             array_push($previsao, $previsaoData);
         }
-        $hotspots[0]["recomedacaoFutura"] = $previsao;
+        $hotspot[0]["recomedacaoFutura"] = $previsao;
         echo json_encode($hotspot);
     }
 
