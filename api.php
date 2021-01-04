@@ -99,7 +99,7 @@
             array_push($previsaoData, $descricao);
             $condicao = $tempo["results"]["forecast"][$j]["condition"];
             array_push($previsaoData, $condicao);
-            if($hotspot[0]["ar-livre"] == t){
+            if($hotspot[0]["ar-livre"] == "t"){
                 if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
                     array_push($previsaoData, "Nao recomendado");
                 }
