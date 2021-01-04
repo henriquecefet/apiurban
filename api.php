@@ -66,7 +66,7 @@
    function retornaHotspot(){
         $nome = $_GET['nome'];
         $hotspot = lerJSON("https://urbanweb.herokuapp.com/apilerumhotspot.php?nome=", $nome);
-        $tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $hotspot[0]['cidade']);
+        $tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $hotspot[0]["cidade"]);
         $recomendacaoHoje  = "";
         $hoje = array();
         array_push($hoje, $tempo["results"]["date"]);
