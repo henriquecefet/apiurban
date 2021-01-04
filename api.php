@@ -53,7 +53,7 @@
                   array_push($previsaoData, "Pouco recomendado");
                }
             }
-            else{
+            elseif($hotspot[0]["ar-livre"] == f){
                array_push($previsaoData, "Recomendado");
             }
             array_push($previsao, $previsaoData);
@@ -98,7 +98,6 @@
             array_push($previsaoData, $diaSemana." (".$data.")");
             array_push($previsaoData, $descricao);
             $condicao = $tempo["results"]["forecast"][$j]["condition"];
-            array_push($previsaoData, $condicao);
             if($hotspot[0]["ar-livre"] == t){
                 if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
                     array_push($previsaoData, "Nao recomendado");
@@ -107,7 +106,7 @@
                     array_push($previsaoData, "Pouco recomendado");
                 }
             }
-            else{
+            elseif($hotspot[0]["ar-livre"] == f){
                 array_push($previsaoData, "Recomendado");
             }
             array_push($previsao, $previsaoData);
