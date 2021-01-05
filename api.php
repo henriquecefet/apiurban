@@ -27,7 +27,7 @@
                $recomendacaoHoje  = "Pouco recomendado";
             }
          }
-         elseif($hotspot[0]["ar-livre"] == f){
+         elseif($hotspots["hotspot"][$i]["ar-livre"] == f){
             $recomendacaoHoje  = "Recomendado";
          }
          $previsao = array();
@@ -53,7 +53,7 @@
                   array_push($previsaoData, "Pouco recomendado");
                }
             }
-            elseif($hotspot[0]["ar-livre"] == f){
+            elseif($hotspots["hotspot"][$i]["ar-livre"] == f){
                array_push($previsaoData, "Recomendado");
             }
             array_push($previsao, $previsaoData);
