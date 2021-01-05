@@ -71,7 +71,7 @@
         $hoje = array();
         array_push($hoje, $tempo["results"]["date"]);
         array_push($hoje, $tempo["results"]["description"]);
-        if($hotspot[0]["ar-livre"] == "t"){
+        if($hotspot[0]["ar-livre"] == t){
             $condicaoHoje = $tempo["results"]["forecast"][0]["condition"];
             if($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain" ){
                 $recomendacaoHoje = "Nao recomendado";
@@ -81,7 +81,7 @@
                 $recomendacaoHoje  = "Pouco recomendado";
             }
         }
-        elseif($hotspot[0]["ar-livre"] == "f"){
+        elseif($hotspot[0]["ar-livre"] == f){
             $recomendacaoHoje  = "Recomendado";
         }
         $previsao = array();
@@ -98,7 +98,7 @@
             array_push($previsaoData, $diaSemana." (".$data.")");
             array_push($previsaoData, $descricao);
             $condicao = $tempo["results"]["forecast"][$j]["condition"];
-            if($hotspot[0]["ar-livre"] == "t"){
+            if($hotspot[0]["ar-livre"] == t){
                 if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
                     array_push($previsaoData, "Nao recomendado");
                 }
@@ -106,7 +106,7 @@
                     array_push($previsaoData, "Pouco recomendado");
                 }
             }
-            elseif($hotspot[0]["ar-livre"] == "f"){
+            elseif($hotspot[0]["ar-livre"] == f){
                 array_push($previsaoData, "Recomendado");
             }
             array_push($previsao, $previsaoData);
