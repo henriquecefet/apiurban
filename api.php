@@ -67,12 +67,11 @@
         $nome = $_GET["nome"];
         $hotspot = lerJSON("https://urbanweb.herokuapp.com/apilerumhotspot.php?nome=", $nome);
         $tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $hotspot[0]["cidade"]);
-        print_r($hotspot);
         $recomendacaoHoje  = "";
         $hoje = array();
         array_push($hoje, $tempo["results"]["date"]);
         array_push($hoje, $tempo["results"]["description"]);
-        if($hotspot[0]["ar-livre"] == t){
+        if($hotspot["hotspot"][0]["ar-livre"] == t){
             $condicaoHoje = $tempo["results"]["forecast"][0]["condition"];
             if($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain" ){
                 $recomendacaoHoje = "Nao recomendado";
@@ -82,7 +81,7 @@
                 $recomendacaoHoje  = "Pouco recomendado";
             }
         }
-        elseif($hotspot[0]["ar-livre"] == f){
+        elseif($hotspot["hotspot"][0]["ar-livre"] == f){
             $recomendacaoHoje  = "Recomendado";
         }
         $previsao = array();
@@ -99,8 +98,7 @@
             array_push($previsaoData, $diaSemana." (".$data.")");
             array_push($previsaoData, $descricao);
             $condicao = $tempo["results"]["forecast"][$j]["condition"];
-            echo $hotspot[0]["ar-livre"];
-            if($hotspot[0]["ar-livre"] == t){
+            if($hotspot["hotspot"][0]["ar-livre"] == t){
                 if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
                     array_push($previsaoData, "Nao recomendado");
                 }
@@ -108,7 +106,7 @@
                     array_push($previsaoData, "Pouco recomendado");
                 }
             }
-            elseif($hotspot[0]["ar-livre"] == f){
+            elseif($hotspot["hotspot"][0]["ar-livre"] == f){
                 array_push($previsaoData, "Recomendado");
             }
             array_push($previsao, $previsaoData);
