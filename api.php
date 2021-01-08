@@ -134,6 +134,7 @@
    function atualizarDadosCovid(){
       $cidade = $_GET['cidade'];
       $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $cidade);
+      print_r($city);
       if($city[0]["pais"]=="brazil"){
          $estado = $city[0]["estado"];
          $covid = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/", $estado);
