@@ -8,7 +8,7 @@
         case "retornaHotspot":
             retornaHotspot();
             break;
-        case " atualizarDadosCovid"
+        case " atualizarDadosCovid":
             atualizarDadosCovid();
             break;
     }
