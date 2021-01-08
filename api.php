@@ -140,6 +140,8 @@
          $pais = $city["cidades"][0]["pais"];
          $casos = $covid["cases"];
          $mortes = $covid["deaths"];
+         echo $estado." ".$pais." ".$casos." ".$mortes."<br>";
+         echo $db;
          $sql =<<<EOF
            SELECT dados('$estado', '$pais', $casos, $mortes);
 EOF;
