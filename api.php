@@ -1,4 +1,5 @@
 <?php
+    include("conexao.php");
     $funcao = $_GET['funcao'];
     switch ($funcao) {
         case "hotspotsClima":
@@ -7,7 +8,11 @@
         case "retornaHotspot":
             retornaHotspot();
             break;
+        case " atualizarDadosCovid"
+            atualizarDadosCovid();
+            break;
     }
+    // A função abaixo recebe o nome de uma cidade e retorna uma lista de hotspots e sua recomendação baseada no clima de hoje e da previsão para os 9 dias seguintes.
    function hotspotsClima(){
       $cidade = $_GET['cidade'];
       $hotspots = lerJSON("https://urbanweb.herokuapp.com/apilerhotspot.php?nome=", $cidade);
@@ -125,5 +130,19 @@
       curl_close($ch);
       $dados = json_decode($result, true);
       return $dados;
+   }
+   function atualizarDadosCovid(){
+      $cidade = $_GET['cidade'];
+      $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $cidade);
+      if($city[0]["pais"]=="brazil"){
+         $estado = $city[0]["estado"]
+         $covid = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/", $estado);
+         print_r($covid);
+      }
+      else{
+        $covid = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/", $city[0]["pais"]);
+        print_r($covid);
+      }
+     
    }
 ?>
