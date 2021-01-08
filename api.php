@@ -132,6 +132,11 @@
       return $dados;
    }
    function atualizarDadosCovid(){
+      $host        = "host = ec2-23-20-129-146.compute-1.amazonaws.com";
+      $port        = "port = 5432";
+      $dbname      = "dbname = d4lbqqmnpeve28";
+      $credentials = "user = zwifcqhcjeiokg password=1ff276855a41e7c3da65d0eabb32545502930e1e2f8250dad7b389adbd09cbcf";
+      $db = pg_connect( "$host $port $dbname $credentials"  );
       $cidade = $_GET['cidade'];
       $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $cidade);
       if($city["cidades"][0]["pais"]=="brazil"){
@@ -141,7 +146,6 @@
          $casos = $covid["cases"];
          $mortes = $covid["deaths"];
          echo $estado." ".$pais." ".$casos." ".$mortes."<br>";
-         echo $db;
          $sql =<<<EOF
            SELECT dados('$estado', '$pais', $casos, $mortes);
 EOF;
