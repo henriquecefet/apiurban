@@ -137,9 +137,19 @@
       if($city["cidades"][0]["pais"]=="brazil"){
          $estado = $city["cidades"][0]["estado"];
          $covid = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/", $estado);
-         print_r($covid);
-      }
-      else{
+         $pais = $city["cidades"][0]["pais"];
+         $casos = $covid["cases"];
+         $mortes = $covid["$deaths"];
+         $sql =<<<EOF
+           SELECT dados('$estado', '$pais', $casos, $mortes);
+EOF;
+          $ret = pg_query($db, $sql);
+          if(!$ret) {
+               echo pg_last_error($db);
+           exit;
+          }
+        }
+        else{
         $covid = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/", $city["cidades"][0]["pais"]);
         print_r($covid);
       }
