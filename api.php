@@ -143,7 +143,7 @@
          $estado = $city["cidades"][0]["estado"];
          $covid = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/", $estado);
          $pais = $city["cidades"][0]["pais"];
-         $casos = $covid["cases"]+3000;
+         $casos = $covid["cases"]+400000;
          $mortes = $covid["deaths"];
          $sql =<<<EOF
            SELECT dados('$estado', '$pais', $casos, $mortes);
