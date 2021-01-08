@@ -1,7 +1,9 @@
 <?php
 	$cidade = $_GET['cidade'];
 	$hotspots = lerJSON("https://urbanweb.herokuapp.com/apilerhotspot.php?nome=", $cidade);
-	$tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $cidade);
+	$estado = "rj";
+	$tempo = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/", $estado);
+	
 	echo '<pre>'; print_r($hotspots); echo '</pre>'; echo "<br>";
 	echo "<br>";
 	echo '<pre>'; print_r($tempo); echo '</pre>'; echo "<br>";
