@@ -148,6 +148,9 @@ EOF;
                echo pg_last_error($db);
            exit;
           }
+          else{
+            echo "sucesso";
+          }
         }
         else{
         $covid = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/", $city["cidades"][0]["pais"]);
