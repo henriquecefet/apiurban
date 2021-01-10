@@ -162,7 +162,22 @@ EOF;
         }
         else{
         $covid = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/", $city["cidades"][0]["pais"]);
-        print_r($covid);
+        $estado = $city["cidades"][0]["estado"];
+         $pais = $city["cidades"][0]["pais"];
+         $casos = $covid["cases"];
+         $mortes = $covid["deaths"];
+         $sql =<<<EOF
+           SELECT dados('$estado', '$pais', $casos, $mortes);
+EOF;
+          $ret = pg_query($db, $sql);
+          if(!$ret) {
+               echo pg_last_error($db);
+           exit;
+          }
+          else{
+            echo "sucesso";
+          }
+        }
       }
    }
    function hotspotsCovid(){  
