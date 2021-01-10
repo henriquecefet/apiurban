@@ -230,6 +230,7 @@ EOF;
     else{
       $hotspot[0]["recomendacao"] = "Recomendado";
     }
+    echo json_encode($hotspot);
    }
    function chamarFuncaoSQL($funcao, $estado){
     $host        = "host = ec2-23-20-129-146.compute-1.amazonaws.com";
