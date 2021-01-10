@@ -175,7 +175,7 @@ EOF;
     $hotspots["situacao_covid"]["crescimento_mortes"] = roud($crescimento_mortes*100, 4);
     for($i = 0; $i < count($hotspots["hotspot"]); $i++){
       if($hotspots["hotspot"][$i]["ar-livre"] == f){
-        if($crescimento_casos > 0.01 || $crescimento_mortes){
+        if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01){
           $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
         }
         else{
