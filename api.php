@@ -171,8 +171,8 @@ EOF;
     $crescimento_casos = chamarFuncaoSQL("getcasos", $city["cidades"][0]["estado"]);
     $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
     $hotspots = lerJSON("https://urbanweb.herokuapp.com/apilerhotspot.php?nome=", $cidade);
-    $hotspots["situacao_covid"]["crescimento_casos"] = roud($crescimento_casos*100, 4);
-    $hotspots["situacao_covid"]["crescimento_mortes"] = roud($crescimento_mortes*100, 4);
+    $hotspots["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
+    $hotspots["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
     for($i = 0; $i < count($hotspots["hotspot"]); $i++){
       if($hotspots["hotspot"][$i]["ar-livre"] == f){
         if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01){
