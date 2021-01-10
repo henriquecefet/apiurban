@@ -167,7 +167,7 @@ EOF;
           $casos = $covid["cases"];
           $mortes = $covid["deaths"];
           echo $casos;
-          echo "<br>"
+          echo "<br>";
           print_r($covid );
           /*
           $sql =<<<EOF
