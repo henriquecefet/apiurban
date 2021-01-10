@@ -14,6 +14,9 @@
         case "hotspotsCovid":
             hotspotsCovid();
             break;
+        case "covidHotspot":
+            covidHotspot();
+            break;
     }
     // A função abaixo recebe o nome de uma cidade e retorna uma lista de hotspots e sua recomendação baseada no clima de hoje e da previsão para os 9 dias seguintes.
    function hotspotsClima(){
@@ -207,6 +210,26 @@ EOF;
       }
     }
     echo json_encode($hotspots);
+   }
+   function covidHotspot(){
+    $nome = $_GET["nome"];
+    $hotspot = lerJSON("https://urbanweb.herokuapp.com/apilerumhotspot.php?nome=", $nome);
+    $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $hotspot[0]["cidade"]);
+    $crescimento_casos = chamarFuncaoSQL("getcasos", $city["cidades"][0]["estado"]);
+    $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
+    $hotspot[0]["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
+    $hotspot[0]["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
+    if($hotspot["hotspot"][0]["ar-livre"] == f){
+      if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01){
+        $hotspot[0]["recomendacao"] = "Nao recomendado";
+      }
+      else{
+        $hotspot[0]["recomendacao"] = "Recomendado";
+      }
+    }
+    else{
+      $hotspot[0]["recomendacao"] = "Recomendado";
+    }
    }
    function chamarFuncaoSQL($funcao, $estado){
     $host        = "host = ec2-23-20-129-146.compute-1.amazonaws.com";
