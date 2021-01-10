@@ -11,6 +11,9 @@
         case "atualizarDadosCovid":
             atualizarDadosCovid();
             break;
+        case "hotspotsCovid":
+            hotspotsCovid();
+            break;
     }
     // A função abaixo recebe o nome de uma cidade e retorna uma lista de hotspots e sua recomendação baseada no clima de hoje e da previsão para os 9 dias seguintes.
    function hotspotsClima(){
@@ -161,6 +164,53 @@ EOF;
         $covid = lerJSON("https://covid19-brazil-api.now.sh/api/report/v1/", $city["cidades"][0]["pais"]);
         print_r($covid);
       }
-     
    }
+   function hotspotsCovid(){  
+    $cidade = $_GET['cidade'];
+    $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $cidade);
+    $crescimento_casos = chamarFuncaoSQL("getcasos", $city["cidades"][0]["estado"]);
+    $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
+    echo $crescimento_casos;
+    echo $crescimento_mortes;
+   }
+   function chamarFuncaoSQL($funcao, $estado){
+    $host        = "host = ec2-23-20-129-146.compute-1.amazonaws.com";
+    $port        = "port = 5432";
+    $dbname      = "dbname = d4lbqqmnpeve28";
+    $credentials = "user = zwifcqhcjeiokg password=1ff276855a41e7c3da65d0eabb32545502930e1e2f8250dad7b389adbd09cbcf";
+    $db = pg_connect( "$host $port $dbname $credentials"  );
+    switch ($funcao) {
+       case "getcasos":
+           $sql =<<<EOF
+           SELECT getcasos('$estado');
+EOF;
+          $ret = pg_query($db, $sql);
+          if(!$ret) {
+               echo pg_last_error($db);
+           exit;
+          }
+          $casos = 0;
+          while($row = pg_fetch_row($ret)) {
+            $casos = $row[0];
+          }
+          return $casos;
+          break;
+      case "getmortes":
+        $sql =<<<EOF
+           SELECT getmortes('$estado');
+EOF;
+          $ret = pg_query($db, $sql);
+          if(!$ret) {
+               echo pg_last_error($db);
+           exit;
+          }
+          $mortes = 0;
+          while($row = pg_fetch_row($ret)) {
+            $casos = $row[0];
+          }
+          return $mortes;
+          break;
+   
+   }
+ }
 ?>
