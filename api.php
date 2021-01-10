@@ -166,7 +166,10 @@ EOF;
           $pais = $city["cidades"][0]["pais"];
           $casos = $covid["cases"];
           $mortes = $covid["deaths"];
-          echo  $casos;
+          echo $casos;
+          echo "<br>"
+          print_r($covid );
+          /*
           $sql =<<<EOF
              SELECT dados('$estado', '$pais', $casos, $mortes);
 EOF;
@@ -178,6 +181,7 @@ EOF;
           else{
             echo "sucesso";
           }
+          */
       }
    }
    function hotspotsCovid(){  
