@@ -166,6 +166,7 @@ EOF;
           $pais = $city["cidades"][0]["pais"];
           $casos = $covid["cases"];
           $mortes = $covid["deaths"];
+          echo  $casos;
           $sql =<<<EOF
              SELECT dados('$estado', '$pais', $casos, $mortes);
 EOF;
