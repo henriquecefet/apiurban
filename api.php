@@ -2,24 +2,24 @@
     include("conexao.php");
     $funcao = $_GET['funcao'];
     switch ($funcao) {
-        case "hotspotsClima":
-            hotspotsClima();
+        case "recomendarCidadeClima":
+            recomendarCidadeClima();
             break;
-        case "retornaHotspot":
-            retornaHotspot();
+        case "recomendarHotspotClima":
+            recomendarHotspotClima();
             break;
         case "atualizarDados":
             atualizarDados();
             break;
-        case "hotspotsCovid":
-            hotspotsCovid();
+        case "recomendarCidadeCovid":
+            recomendarCidadeCovid();
             break;
-        case "covidHotspot":
-            covidHotspot();
+        case "recomendarHotspotCovid":
+            recomendarHotspotCovid();
             break;
     }
     // A função abaixo recebe o nome de uma cidade e retorna uma lista de hotspots e sua recomendação baseada no clima de hoje e da previsão para os 9 dias seguintes.
-   function hotspotsClima(){
+   function recomendarCidadeClima(){
       $cidade = $_GET['cidade'];
       $hotspots = lerJSON("https://urbanweb.herokuapp.com/apilerhotspot.php?nome=", $cidade);
       $tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $cidade);
@@ -74,7 +74,7 @@
       echo json_encode($hotspots);
    }
 
-   function retornaHotspot(){
+   function recomendarHotspotClima(){
         $nome = $_GET["nome"];
         $hotspot = lerJSON("https://urbanweb.herokuapp.com/apilerumhotspot.php?nome=", $nome);
         $tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $hotspot[0]["cidade"]);
@@ -188,7 +188,7 @@ EOF;
           }
       }
    }
-   function hotspotsCovid(){  
+   function recomendarCidadeCovid(){  
     $cidade = $_GET['cidade'];
     $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $cidade);
     $crescimento_casos = chamarFuncaoSQL("getcasos", $city["cidades"][0]["estado"]);
@@ -222,7 +222,7 @@ EOF;
     }
     echo json_encode($hotspots);
    }
-   function covidHotspot(){
+   function recomendarHotspotCovid(){
     $nome = $_GET["nome"];
     $hotspot = lerJSON("https://urbanweb.herokuapp.com/apilerumhotspot.php?nome=", $nome);
     $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $hotspot[0]["cidade"]);
