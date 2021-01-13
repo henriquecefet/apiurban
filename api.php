@@ -201,12 +201,23 @@ EOF;
         if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01){
           $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
         }
+        elseif($crescimento_casos > 0.006 || $crescimento_mortes > 0.006){
+          $hotspots["hotspot"][$i]["recomendacao"] = "Pouco recomendado";
+        }
         else{
           $hotspots["hotspot"][$i]["recomendacao"] = "Recomendado";
         }
       }
       else{
-        $hotspots["hotspot"][$i]["recomendacao"] = "Recomendado";
+        if($crescimento_casos > 0.02 || $crescimento_mortes > 0.02){
+          $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
+        }
+        elseif($crescimento_casos > 0.012 || $crescimento_mortes > 0.012){
+          $hotspots["hotspot"][$i]["recomendacao"] = "Pouco recomendado";
+        }
+        else{
+          $hotspots["hotspot"][$i]["recomendacao"] = "Recomendado";
+        }
       }
     }
     echo json_encode($hotspots);
