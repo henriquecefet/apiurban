@@ -230,16 +230,27 @@ EOF;
     $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
     $hotspot[0]["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
     $hotspot[0]["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
-    if($hotspot["hotspot"][0]["ar-livre"] == f){
-      if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01){
-        $hotspot[0]["recomendacao"] = "Nao recomendado";
-      }
-      else{
-        $hotspot[0]["recomendacao"] = "Recomendado";
-      }
-    }
-    else{
-      $hotspot[0]["recomendacao"] = "Recomendado";
+    if($hotspots["hotspot"][$i]["ar-livre"] == f){
+          if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01){
+            $hotspot[0]["recomendacao"] = "Nao recomendado";
+          }
+          elseif($crescimento_casos > 0.006 || $crescimento_mortes > 0.006){
+            $hotspot[0]["recomendacao"] = "Pouco recomendado";
+          }
+          else{
+            $hotspot[0]["recomendacao"] = "Recomendado";
+          }
+        }
+        else{
+          if($crescimento_casos > 0.02 || $crescimento_mortes > 0.02){
+            $hotspot[0]["recomendacao"] = "Nao recomendado";
+          }
+          elseif($crescimento_casos > 0.012 || $crescimento_mortes > 0.012){
+          $hotspot[0]["recomendacao"] = "Pouco recomendado";
+          }
+          else{
+            $hotspot[0]["recomendacao"] = "Recomendado";
+          }
     }
     echo json_encode($hotspot);
    }
