@@ -158,7 +158,7 @@ function atualizarDados(){
   $cidades = lerJSON("https://urbanweb.herokuapp.com/apilervariascidades.php", "");
   $estados = array();
   for($i = 0; $i < count($cidades["cidades"]); $i++){
-   if(!in_array($cidades["cidades"][$i]["estado"])){
+   if(!in_array($cidades["cidades"][$i]["estado"], $estados)){
     atualizarDadosCovid($cidades["cidades"][$i]["nome"]);
     array_push($estados, $cidades["cidades"][$i]["estado"]);
   }
