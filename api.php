@@ -341,10 +341,11 @@ function recomendarCidadeClimaCovid(){
     $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
     $hotspots["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
     $hotspots["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
-    }
     echo json_encode($hotspot);
+    }
+ 
   else{
-    http_response_code(200);
+    http_response_code(404);
   }
 }
 ?>
