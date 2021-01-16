@@ -18,6 +18,9 @@ if(isset($_GET['funcao'])){
         case "recomendarHotspotCovid":
             recomendarHotspotCovid();
             break;
+        case "recomendarCidadeClimaCovid":
+            recomendarCidadeClimaCovid();
+            break;
     }
 }
 else{
@@ -327,9 +330,7 @@ EOF;
 
     }
 }
-
-    function recomendarCidadeClimaCovid()
-    {
+    function recomendarCidadeClimaCovid(){
         if (isset ($_GET ['cidade'])) {
             $cidade = $_GET ['cidade'];
             $hotspots = lerJSON("https://urbanweb.herokuapp.com/apilerhotspot.php?nome=", $cidade);
