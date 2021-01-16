@@ -18,6 +18,9 @@ if(isset($_GET['funcao'])){
   case "recomendarHotspotCovid":
   recomendarHotspotCovid();
   break;
+  case "recomendarCidadeClimaCovid":
+  recomendarCidadeClimaCovid();
+  break;
 }
 }
 else{
@@ -180,7 +183,7 @@ function atualizarDadosCovid($cidade){
    $mortes = $covid["deaths"];
    $sql =<<<EOF
    SELECT dados('$estado', '$pais', $casos, $mortes);
-EOF;
+   EOF;
    $ret = pg_query($db, $sql);
    if(!$ret) {
      echo pg_last_error($db);
@@ -198,7 +201,7 @@ else{
   $mortes = $covid["data"]["deaths"];
   $sql =<<<EOF
   SELECT dados('$estado', '$pais', $casos, $mortes);
-EOF;
+  EOF;
   $ret = pg_query($db, $sql);
   if(!$ret) {
    echo pg_last_error($db);
@@ -297,7 +300,7 @@ function chamarFuncaoSQL($funcao, $estado){
    case "getcasos":
    $sql =<<<EOF
    SELECT getcasos('$estado');
-EOF;
+   EOF;
    $ret = pg_query($db, $sql);
    if(!$ret) {
      echo pg_last_error($db);
@@ -312,7 +315,7 @@ EOF;
   case "getmortes":
   $sql =<<<EOF
   SELECT getmortes('$estado');
-EOF;
+  EOF;
   $ret = pg_query($db, $sql);
   if(!$ret) {
    echo pg_last_error($db);
@@ -321,10 +324,26 @@ EOF;
  $mortes = 0;
  while($row = pg_fetch_row($ret)) {
   $mortes = $row[0];
- }
-  return $mortes;
-  break;
+}
+return $mortes;
+break;
 
+}
+}
+function recomendarCidadeClimaCovid(){
+  if(isset($_GET['cidade'])){
+    $cidade = $_GET['cidade'];
+    $hotspots = lerJSON("https://urbanweb.herokuapp.com/apilerhotspot.php?nome=", $cidade);
+    $tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $cidade);
+    $recomendacaoHoje  = "";
+    $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $cidade);
+    $crescimento_casos = chamarFuncaoSQL("getcasos", $city["cidades"][0]["estado"]);
+    $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
+    $hotspots["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
+    $hotspots["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
+    }
+  else{
+    echo json_encode($hotspot);
   }
 }
 ?>
