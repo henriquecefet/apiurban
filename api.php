@@ -290,7 +290,7 @@ function recomendarHotspotCovid(){
         http_response_code(404);
     }
 }
-function chamarFuncaoSQL($funcao, $estado)s{
+function chamarFuncaoSQL($funcao, $estado){
     $host = "host = ec2-23-20-129-146.compute-1.amazonaws.com";
     $port = "port = 5432";
     $dbname = "dbname = d4lbqqmnpeve28";
