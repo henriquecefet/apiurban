@@ -256,7 +256,7 @@ function recomendarHotspotCovid(){
     if(isset($_GET['nome'])){
         $nome = $_GET["nome"];
         $hotspot = lerJSON("https://urbanweb.herokuapp.com/apilerumhotspot.php?nome=", $nome);
-        $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $hotspot[0]["cidade"]);
+        $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $hotspot["hotspot"][0]["cidade"]);
         $crescimento_casos = chamarFuncaoSQL("getcasos", $city["cidades"][0]["estado"]);
         $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
         $hotspot[0]["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
