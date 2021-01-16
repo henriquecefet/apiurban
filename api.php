@@ -337,10 +337,10 @@ EOF;
             $tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $cidade);
             $recomendacaoHoje = "";
             $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $cidade);
-            $crescimento_casos = chamarFuncaoSQL("getcasos", $city ["cidades"] [0] ["estado"]);
+            $crescimento_casos = chamarFuncaoSQL("getcasos", $city["cidades"][0]["estado"]);
             $crescimento_mortes = chamarFuncaoSQL("getmortes", $city ["cidades"] [0] ["estado"]);
-            $hotspots ["situacao_covid"] ["crescimento_casos"] = redondo($crescimento_casos * 100, 4);
-            $hotspots ["situacao_covid"] ["crescimento_mortes"] = rodada($crescimento_mortes * 100, 4);
+            $hotspots["situacao_covid"]["crescimento_casos"] = round($crescimento_casos * 100, 4);
+            $hotspots["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes * 100, 4);
             for ($i = 0; $i < count($hotspots["hotspot"]); $i++) {
                 $hoje = array();
                 array_push($hoje, $tempo["results"]["date"]);
@@ -350,21 +350,21 @@ EOF;
                     if ($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain") {
                         $recomendacaoHoje = "Nao recomendado";
 
-                    } elseif ($condicaoHoje == "cloud" || $condicaoHoje == "cloudly_day" || $condicaoHoje == "fog" || $condicaoHoje == "cloudly_night") {
+                    } elseif($condicaoHoje == "cloud" || $condicaoHoje == "cloudly_day" || $condicaoHoje == "fog" || $condicaoHoje == "cloudly_night") {
                         $recomendacaoHoje = "Pouco recomendado";
                     }
-                    if ($crescimento_casos > 0.02 || $crescimento_mortes > 0.02) {
+                    if($crescimento_casos > 0.02 || $crescimento_mortes > 0.02) {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
-                    } elseif ($crescimento_casos > 0.012 || $crescimento_mortes > 0.012) {
+                    }elseif ($crescimento_casos > 0.012 || $crescimento_mortes > 0.012) {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Pouco recomendado";
-                    } else {
+                    }else {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Recomendado";
                     }
-                    if ($recomendacaoHoje == "Nao recomendado" && $hotspots["hotspot"][$i]["recomendacao"] == "Pouco recomendado") {
+                    if($recomendacaoHoje == "Nao recomendado" && $hotspots["hotspot"][$i]["recomendacao"] == "Pouco recomendado") {
                         $hotspots["hotspot"][$i]["recomendacao"] == "Nao recomendado";
-                    } elseif ($recomendacaoHoje == "Nao recomendado" && $hotspots["hotspot"][$i]["recomendacao"] == "Recomendado") {
+                    } elseif($recomendacaoHoje == "Nao recomendado" && $hotspots["hotspot"][$i]["recomendacao"] == "Recomendado") {
                         $hotspots["hotspot"][$i]["recomendacao"] == "Nao recomendado";
-                    } elseif ($recomendacaoHoje == "Pouco recomendado" && $hotspots["hotspot"][$i]["recomendacao"] == "Recomendado") {
+                    } elseif($recomendacaoHoje == "Pouco recomendado" && $hotspots["hotspot"][$i]["recomendacao"] == "Recomendado") {
                         $hotspots["hotspot"][$i]["recomendacao"] == "Pouco recomendado";
                     }
                 } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
