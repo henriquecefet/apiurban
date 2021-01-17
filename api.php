@@ -277,7 +277,7 @@ function recomendarHotspotCovid(){
         $hotspot["hotspot"][0]["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
         if($hotspot["hotspot"][0]["ar-livre"] == f){
             if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01){
-                $hotspot[["hotspot"][0]["recomendacao"] = "Nao recomendado";
+                $hotspot["hotspot"][0]["recomendacao"] = "Nao recomendado";
             }
             elseif($crescimento_casos > 0.006 || $crescimento_mortes > 0.006){
                 $hotspot["hotspot"][0]["recomendacao"] = "Pouco recomendado";
