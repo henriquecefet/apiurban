@@ -1,5 +1,9 @@
 <?php
 include("conexao.php");
+global $taxaFechadaAlta = 0.01;
+global $taxaFechadaMedia = 0.006;
+global $taxaAbertaAlta = 0.02;
+global $taxaAbertaMedia = 0.012;
 if(isset($_GET['funcao'])){
     $funcao = $_GET['funcao'];
     switch ($funcao) {
@@ -29,10 +33,6 @@ if(isset($_GET['funcao'])){
 else{
     http_response_code(404);
 }
-global $taxaFechadaAlta = 0.01;
-global $taxaFechadaMedia = 0.006;
-global $taxaAbertaAlta = 0.02;
-global $taxaAbertaMedia= 0.012;
 // A função abaixo recebe o nome de uma cidade e retorna uma lista de hotspots e sua recomendação baseada no clima de hoje e da previsão para os 9 dias seguintes.
 function recomendarCidadeClima(){
     if(isset($_GET['cidade'])){
