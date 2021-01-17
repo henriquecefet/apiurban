@@ -1,9 +1,9 @@
 <?php
 include("conexao.php");
-global $taxaFechadaAlta = 0.01;
-global $taxaFechadaMedia = 0.006;
-global $taxaAbertaAlta = 0.02;
-global $taxaAbertaMedia = 0.012;
+$GLOBALS['taxaFechadaAlta'] = 0.01;
+$GLOBALS['taxaFechadaMedia'] = 0.006;
+$GLOBALS['taxaAbertaAlta'] = 0.02;
+$GLOBALS['taxaAbertaMedia'] = 0.012;
 if(isset($_GET['funcao'])){
     $funcao = $_GET['funcao'];
     switch ($funcao) {
@@ -240,10 +240,10 @@ function recomendarCidadeCovid(){
         $hotspots["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
         for($i = 0; $i < count($hotspots["hotspot"]); $i++){
             if($hotspots["hotspot"][$i]["ar-livre"] == f){
-                if($crescimento_casos > $taxaFechadaAlta || $crescimento_mortes > $taxaFechadaAlta){
+                if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']){
                     $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
                 }
-                elseif($crescimento_casos >$taxaFechadaMedia || $crescimento_mortes >$taxaFechadaMedia){
+                elseif($crescimento_casos >$GLOBALS['taxaFechadaMedia'] || $crescimento_mortes >$GLOBALS['taxaFechadaMedia']){
                     $hotspots["hotspot"][$i]["recomendacao"] = "Pouco recomendado";
                 }
                 else{
@@ -251,10 +251,10 @@ function recomendarCidadeCovid(){
                 }
             }
             else{
-                if($crescimento_casos > $taxaAbertaAlta || $crescimento_mortes > $taxaAbertaAlta){
+                if($crescimento_casos > $GLOBALS['taxaAbertaAlta'] || $crescimento_mortes > $GLOBALS['taxaAbertaAlta']){
                     $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
                 }
-                elseif($crescimento_casos > $taxaFechadaAlta || $crescimento_mortes > $taxaFechadaAlta){
+                elseif($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']){
                     $hotspots["hotspot"][$i]["recomendacao"] = "Pouco recomendado";
                 }
                 else{
@@ -279,10 +279,10 @@ function recomendarHotspotCovid(){
         $hotspot["hotspot"][0]["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
         $hotspot["hotspot"][0]["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
         if($hotspot["hotspot"][0]["ar-livre"] == f){
-            if($crescimento_casos > $taxaFechadaAlta || $crescimento_mortes > $taxaFechadaAlta){
+            if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']){
                 $hotspot["hotspot"][0]["recomendacao"] = "Nao recomendado";
             }
-            elseif($crescimento_casos >$taxaFechadaMedia || $crescimento_mortes >$taxaFechadaMedia){
+            elseif($crescimento_casos >$GLOBALS['taxaFechadaMedia'] || $crescimento_mortes >$GLOBALS['taxaFechadaMedia']){
                 $hotspot["hotspot"][0]["recomendacao"] = "Pouco recomendado";
             }
             else{
@@ -290,10 +290,10 @@ function recomendarHotspotCovid(){
             }
         }
         else{
-            if($crescimento_casos > $taxaAbertaAlta || $crescimento_mortes > $taxaAbertaAlta){
+            if($crescimento_casos > $GLOBALS['taxaAbertaAlta'] || $crescimento_mortes > $GLOBALS['taxaAbertaAlta']){
                 $hotspot["hotspot"][0]["recomendacao"] = "Nao recomendado";
             }
-            elseif($crescimento_casos > $taxaFechadaAlta || $crescimento_mortes > $taxaFechadaAlta){
+            elseif($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']){
                 $hotspot["hotspot"][0]["recomendacao"] = "Pouco recomendado";
             }
             else{
@@ -373,9 +373,9 @@ EOF;
                     else{
                       $recomendacaoHoje  = "Recomendado";
                     }
-                    if($crescimento_casos > $taxaAbertaAlta || $crescimento_mortes > $taxaAbertaAlta) {
+                    if($crescimento_casos > $GLOBALS['taxaAbertaAlta'] || $crescimento_mortes > $GLOBALS['taxaAbertaAlta']) {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
-                    }elseif ($crescimento_casos > $taxaFechadaAlta2 || $crescimento_mortes > $taxaFechadaAlta2) {
+                    }elseif ($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Pouco recomendado";
                     }else {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Recomendado";
@@ -388,9 +388,9 @@ EOF;
                         $hotspots["hotspot"][$i]["recomendacao"] == "Pouco recomendado";
                     }
                 } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
-                    if($crescimento_casos > $taxaFechadaAlta || $crescimento_mortes > $taxaFechadaAlta) {
+                    if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
-                    }elseif ($crescimento_casos > $taxaFechadaMedia || $crescimento_mortes > $taxaFechadaMedia) {
+                    }elseif ($crescimento_casos > $GLOBALS['taxaFechadaMedia'] || $crescimento_mortes > $GLOBALS['taxaFechadaMedia']) {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Pouco recomendado";
                     }else {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Recomendado";
@@ -421,9 +421,9 @@ EOF;
                          else{
                             $recomendacaoData = "Recomendado";
                         }
-                        if($crescimento_casos > $taxaAbertaAlta || $crescimento_mortes > $taxaAbertaAlta) {
+                        if($crescimento_casos > $GLOBALS['taxaAbertaAlta'] || $crescimento_mortes > $GLOBALS['taxaAbertaAlta']) {
                           $recomendacaoCovid = "Nao recomendado";
-                        }elseif ($crescimento_casos > $taxaFechadaAlta || $crescimento_mortes > $taxaFechadaAlta) {
+                        }elseif ($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                             $recomendacaoCovid = "Pouco recomendado";
                         }else {
                             $recomendacaoCovid = "Recomendado";
@@ -437,9 +437,9 @@ EOF;
                         }
                         array_push($previsaoData,  $recomendacaoData);
                     } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
-                       if($crescimento_casos > $taxaFechadaAlta || $crescimento_mortes > $taxaFechadaAlta) {
+                       if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                           array_push($previsaoData, "Nao recomendado");
-                        }elseif ($crescimento_casos > $taxaFechadaMedia || $crescimento_mortes > $taxaFechadaMedia) {
+                        }elseif ($crescimento_casos > $GLOBALS['taxaFechadaMedia'] || $crescimento_mortes > $GLOBALS['taxaFechadaMedia']) {
                               array_push($previsaoData, "Pouco recomendado");
                         }else {
                              array_push($previsaoData, "Recomendado");
@@ -482,9 +482,9 @@ EOF;
             else{
                 $recomendacaoHoje  = "Recomendado";
             }
-            if($crescimento_casos > $taxaAbertaAlta || $crescimento_mortes > $taxaAbertaAlta) {
+            if($crescimento_casos > $GLOBALS['taxaAbertaAlta'] || $crescimento_mortes > $GLOBALS['taxaAbertaAlta']) {
                 $recomendacaoCovidHoje = "Nao recomendado";
-            }elseif ($crescimento_casos > $taxaFechadaAlta2 || $crescimento_mortes > $taxaFechadaAlta2) {
+            }elseif ($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                 $recomendacaoCovidHoje = "Pouco recomendado";
             }
             else {
@@ -499,9 +499,9 @@ EOF;
             }
         }
         elseif($hotspot["hotspot"][0]["ar-livre"] == f){
-            if($crescimento_casos > $taxaFechadaAlta || $crescimento_mortes > $taxaFechadaAlta) {
+            if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                  $recomendacaoHoje  = "Nao recomendado";
-            }elseif ($crescimento_casos > $taxaFechadaMedia || $crescimento_mortes > $taxaFechadaMedia) {
+            }elseif ($crescimento_casos > $GLOBALS['taxaFechadaMedia'] || $crescimento_mortes > $GLOBALS['taxaFechadaMedia']) {
                  $recomendacaoHoje  = "Pouco recomendado";
             }else {
                  $recomendacaoHoje  = "Recomendado";
@@ -532,9 +532,9 @@ EOF;
                 else{
                     $recomendacaoData = "Recomendado";
                         }
-                if($crescimento_casos > $taxaAbertaAlta || $crescimento_mortes > $taxaAbertaAlta) {
+                if($crescimento_casos > $GLOBALS['taxaAbertaAlta'] || $crescimento_mortes > $GLOBALS['taxaAbertaAlta']) {
                     $recomendacaoCovid = "Nao recomendado";
-                }elseif ($crescimento_casos > $taxaFechadaAlta2 || $crescimento_mortes > $taxaFechadaAlta2) {
+                }elseif ($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                     $recomendacaoCovid = "Pouco recomendado";
                 }else {
                     $recomendacaoCovid = "Recomendado";
@@ -548,9 +548,9 @@ EOF;
                 }
                 array_push($previsaoData,  $recomendacaoData);
                 } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
-                    if($crescimento_casos > $taxaFechadaAlta || $crescimento_mortes > $taxaFechadaAlta) {
+                    if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                         array_push($previsaoData, "Nao recomendado");
-                    }elseif ($crescimento_casos > $taxaFechadaMedia || $crescimento_mortes > $taxaFechadaMedia) {
+                    }elseif ($crescimento_casos > $GLOBALS['taxaFechadaMedia'] || $crescimento_mortes > $GLOBALS['taxaFechadaMedia']) {
                         array_push($previsaoData, "Pouco recomendado");
                     }else {
                         array_push($previsaoData, "Recomendado");
