@@ -123,7 +123,7 @@ function recomendarHotspotClima(){
         }
         $previsao = array();
         array_push($hoje, $recomendacaoHoje);
-        $hotspot[0]["recomedacao"] = $hoje;
+        $hotspot["hotspot"][0]["recomedacao"] = $hoje;
         for($j = 1; $j < count($tempo["results"]["forecast"]); $j++){
             $previsaoData = array();
             $diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
