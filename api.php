@@ -400,18 +400,41 @@ EOF;
                     $data = $tempo["results"]["forecast"][$j]["date"];
                     array_push($previsaoData, $diaSemana . " (" . $data . ")");
                     array_push($previsaoData, $descricao);
+                    $recomendacaoData = "";
+                    $recomendacaoCovid = "";
                     $condicao = $tempo["results"]["forecast"][$j]["condition"];
                     if ($hotspots["hotspot"][$i]["ar-livre"] == t) {
                         if ($condicao == "storm" || $condicao == "hail" || $condicao == "rain") {
-                            array_push($previsaoData, "Nao recomendado");
+                            $recomendacaoData = "Nao recomendado";
                         } elseif ($condicao == "cloud" || $condicao == "cloudly_day" || $condicao == "fog" || $condicao == "cloudly_night") {
-                            array_push($previsaoData, "Pouco recomendado");
+                            $recomendacaoData = "Pouco recomendado";
                         }
                          else{
-                           array_push($previsaoData, "Recomendado");
+                            $recomendacaoData = "Recomendado";
                         }
+                        if($crescimento_casos > 0.02 || $crescimento_mortes > 0.02) {
+                          $recomendacaoCovid = "Nao recomendado";
+                        }elseif ($crescimento_casos > 0.012 || $crescimento_mortes > 0.012) {
+                            $recomendacaoCovid = "Pouco recomendado";
+                        }else {
+                            $recomendacaoCovid = "Recomendado";
+                        }
+                        if($recomendacaoHoje == "Nao recomendado" && $recomendacaoCovid == "Pouco recomendado") {
+                            $recomendacaoData == "Nao recomendado";
+                        } elseif($recomendacaoHoje == "Nao recomendado" && $recomendacaoCovid == "Recomendado") {
+                             $recomendacaoData == "Nao recomendado";
+                        } elseif($recomendacaoHoje == "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
+                             $recomendacaoData == "Pouco recomendado";
+                        }
+                        array_push($previsaoData,  $recomendacaoData);
                     } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
-                        array_push($previsaoData, "Recomendado");
+                       if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01) {
+                          array_push($previsaoData, "Nao recomendado");
+                        }elseif ($crescimento_casos > 0.06 || $crescimento_mortes > 0.06) {
+                              array_push($previsaoData, "Pouco recomendado");
+                        }else {
+                             array_push($previsaoData, "Recomendado");
+                        }
                     }
                     array_push($previsao, $previsaoData);
                 }
