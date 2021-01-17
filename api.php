@@ -75,7 +75,7 @@ function recomendarCidadeClima(){
                         array_push($previsaoData, "Pouco recomendado");
                     }
                     else{
-                      $recomendacaoHoje  = "Recomendado";
+                      array_push($previsaoData, "Recomendado");
                     }
                 }
                 elseif($hotspots["hotspot"][$i]["ar-livre"] == f){
@@ -135,6 +135,9 @@ function recomendarHotspotClima(){
                 }
                 elseif($condicao == "cloud" ||  $condicao == "cloudly_day" || $condicao == "fog" ||  $condicao == "cloudly_night" ){
                     array_push($previsaoData, "Pouco recomendado");
+                }
+                else{
+                    array_push($previsaoData, "Recomendado");
                 }
             }
             elseif($hotspot["hotspot"][0]["ar-livre"] == f){
@@ -403,6 +406,9 @@ EOF;
                             array_push($previsaoData, "Nao recomendado");
                         } elseif ($condicao == "cloud" || $condicao == "cloudly_day" || $condicao == "fog" || $condicao == "cloudly_night") {
                             array_push($previsaoData, "Pouco recomendado");
+                        }
+                         else{
+                           array_push($previsaoData, "Recomendado");
                         }
                     } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
                         array_push($previsaoData, "Recomendado");
