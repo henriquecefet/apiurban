@@ -465,8 +465,8 @@ EOF;
         $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $hotspot["hotspot"][0]["cidade"]);
         $crescimento_casos = chamarFuncaoSQL("getcasos", $city["cidades"][0]["estado"]);
         $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
-        $hotspot[0]["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
-        $hotspot[0]["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
+        $hotspot["hotspot"][0]["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
+        $hotspot["hotspot"][0]["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
         if($hotspot["hotspot"][0]["ar-livre"] == t){
             $condicaoHoje = $tempo["results"]["forecast"][0]["condition"];
             if($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain" ){
@@ -555,7 +555,7 @@ EOF;
                 }
         array_push($previsao, $previsaoData);
         }
-        $hotspot[0]["recomendacaoFutura"] = $previsao;
+        $hotspot["hotspot"][0]["recomendacaoFutura"] = $previsao;
         http_response_code(200);
         echo json_encode($hotspot);
       }
