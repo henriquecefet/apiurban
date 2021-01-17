@@ -151,7 +151,7 @@ function recomendarHotspotClima(){
             }
             array_push($previsao, $previsaoData);
         }
-        $hotspot["hotspot"]["recomedacaoFutura"] = $previsao;
+        $hotspot["hotspot"][0]["recomedacaoFutura"] = $previsao;
         http_response_code(200);
         echo json_encode($hotspot);
     }
