@@ -555,7 +555,7 @@ EOF;
                     $recomendacaoGeral = $recomendacaoData;
                 }
                 array_push($previsaoData,  $recomendacaoGeral);
-                } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
+                } elseif ($hotspots["hotspot"][0]["ar-livre"] == f) {
                     if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                         array_push($previsaoData, "Nao recomendado");
                     }elseif ($crescimento_casos > $GLOBALS['taxaFechadaMedia'] || $crescimento_mortes > $GLOBALS['taxaFechadaMedia']) {
