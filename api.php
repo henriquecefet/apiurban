@@ -21,6 +21,9 @@ if(isset($_GET['funcao'])){
         case "recomendarCidadeClimaCovid":
             recomendarCidadeClimaCovid();
             break;
+        case "recomendarHotspotClimaCovid":
+            recomendarHotspotClimaCovid();
+            break;
     }
 }
 else{
@@ -110,6 +113,9 @@ function recomendarHotspotClima(){
             }
             elseif($condicaoHoje =="cloud" || $condicaoHoje =="cloudly_day"||$condicaoHoje =="fog"|| $condicaoHoje=="cloudly_night" ) {
                 $recomendacaoHoje  = "Pouco recomendado";
+            }
+            else{
+                  $recomendacaoHoje  = "Recomendado";
             }
         }
         elseif($hotspot["hotspot"][0]["ar-livre"] == f){
@@ -419,11 +425,11 @@ EOF;
                         }else {
                             $recomendacaoCovid = "Recomendado";
                         }
-                        if($recomendacaoHoje == "Nao recomendado" && $recomendacaoCovid == "Pouco recomendado") {
+                        if($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Pouco recomendado") {
                             $recomendacaoData == "Nao recomendado";
-                        } elseif($recomendacaoHoje == "Nao recomendado" && $recomendacaoCovid == "Recomendado") {
+                        } elseif($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Recomendado") {
                              $recomendacaoData == "Nao recomendado";
-                        } elseif($recomendacaoHoje == "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
+                        } elseif($recomendacaoData == "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
                              $recomendacaoData == "Pouco recomendado";
                         }
                         array_push($previsaoData,  $recomendacaoData);
@@ -440,9 +446,120 @@ EOF;
                 }
                 $hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsao;
             }
+            http_response_code(200);
             echo json_encode($hotspots);
         } else {
             http_response_code(404);
         }
     }
-    ?>
+    function recomendarHotspotClimaCovid(){
+      if (isset ($_GET ["nome"])) {
+        $nome = $_GET["nome"];
+        $hotspot = lerJSON("https://urbanweb.herokuapp.com/apilerumhotspot.php?nome=", $nome);
+        $tempo = lerJSON("https://api.hgbrasil.com/weather?key=da6e4d4b&city_name=", $hotspot["hotspot"][0]["cidade"]);
+        $recomendacaoHoje  = "";
+        $recomendacaoCovidHoje  = "";
+        $hoje = array();
+        array_push($hoje, $tempo["results"]["date"]);
+        array_push($hoje, $tempo["results"]["description"]);
+        $city = lerJSON("https://urbanweb.herokuapp.com/apilercidade.php?cidade=", $hotspot["hotspot"][0]["cidade"]);
+        $crescimento_casos = chamarFuncaoSQL("getcasos", $city["cidades"][0]["estado"]);
+        $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
+        $hotspot[0]["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
+        $hotspot[0]["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
+        if($hotspot["hotspot"][0]["ar-livre"] == t){
+            $condicaoHoje = $tempo["results"]["forecast"][0]["condition"];
+            if($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain" ){
+                $recomendacaoHoje = "Nao recomendado";
+
+            }
+            elseif($condicaoHoje =="cloud" || $condicaoHoje =="cloudly_day"||$condicaoHoje =="fog"|| $condicaoHoje=="cloudly_night" ) {
+                $recomendacaoHoje  = "Pouco recomendado";
+            }
+            else{
+                $recomendacaoHoje  = "Recomendado";
+            }
+            if($crescimento_casos > 0.02 || $crescimento_mortes > 0.02) {
+                $recomendacaoCovidHoje = "Nao recomendado";
+            }elseif ($crescimento_casos > 0.012 || $crescimento_mortes > 0.012) {
+                $recomendacaoCovidHoje = "Pouco recomendado";
+            else {
+                $recomendacaoCovidHoje = "Recomendado";
+            }
+            if($recomendacaoHoje == "Nao recomendado" && $recomendacaoCovidHoje == "Pouco recomendado"){
+                   $recomendacaoHoje == "Nao recomendado";
+            } elseif($recomendacaoHoje == "Nao recomendado" && $recomendacaoCovidHoje == "Recomendado") {
+                $recomendacaoHoje == "Nao recomendado";
+            } elseif($recomendacaoHoje == "Pouco recomendado" && $recomendacaoCovidHoje == "Recomendado") {
+                $recomendacaoHoje == "Pouco recomendado";
+            }
+        }
+        elseif($hotspot["hotspot"][0]["ar-livre"] == f){
+            if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01) {
+                 $recomendacaoHoje  = "Nao recomendado";
+            }elseif ($crescimento_casos > 0.06 || $crescimento_mortes > 0.06) {
+                 $recomendacaoHoje  = "Pouco recomendado";
+            }else {
+                 $recomendacaoHoje  = "Recomendado";
+            }
+        }
+        $previsao = array();
+        array_push($hoje, $recomendacaoHoje);
+        $hotspot[0]["recomedacao"] = $hoje;
+        for($j = 1; $j < count($tempo["results"]["forecast"]); $j++){
+            $previsaoData = array();
+            $diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
+            if($diaSemana == "Sáb"){
+                $diaSemana = str_replace("Sáb", "Sab",$diaSemana);
+            }
+            $descricao = $tempo["results"]["forecast"][$j]["description"];
+            $data = $tempo["results"]["forecast"][$j]["date"];
+            array_push($previsaoData, $diaSemana." (".$data.")");
+            array_push($previsaoData, $descricao);
+            $recomendacaoData = "";
+            $recomendacaoCovid = "";
+            $condicao = $tempo["results"]["forecast"][$j]["condition"];
+            if ($hotspots["hotspot"][$i]["ar-livre"] == t) {
+                if ($condicao == "storm" || $condicao == "hail" || $condicao == "rain") {
+                    $recomendacaoData = "Nao recomendado";
+                } elseif ($condicao == "cloud" || $condicao == "cloudly_day" || $condicao == "fog" || $condicao == "cloudly_night") {
+                    $recomendacaoData = "Pouco recomendado";
+                        }
+                else{
+                    $recomendacaoData = "Recomendado";
+                        }
+                if($crescimento_casos > 0.02 || $crescimento_mortes > 0.02) {
+                    $recomendacaoCovid = "Nao recomendado";
+                }elseif ($crescimento_casos > 0.012 || $crescimento_mortes > 0.012) {
+                    $recomendacaoCovid = "Pouco recomendado";
+                }else {
+                    $recomendacaoCovid = "Recomendado";
+                }
+                if($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Pouco recomendado") {
+                    $recomendacaoData == "Nao recomendado";
+                } elseif($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Recomendado") {
+                    $recomendacaoData == "Nao recomendado";
+                } elseif($recomendacaoData == "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
+                    $recomendacaoData == "Pouco recomendado";
+                }
+                array_push($previsaoData,  $recomendacaoData);
+                } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
+                    if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01) {
+                        array_push($previsaoData, "Nao recomendado");
+                    }elseif ($crescimento_casos > 0.06 || $crescimento_mortes > 0.06) {
+                        array_push($previsaoData, "Pouco recomendado");
+                    }else {
+                        array_push($previsaoData, "Recomendado");
+                    }
+                }
+                array_push($previsao, $previsaoData);
+        }
+        $hotspot[0]["recomedacaoFutura"] = $previsao;
+        http_response_code(200);
+        echo json_encode($hotspot);
+      }
+      else{
+        http_response_code(404);
+      }
+    }
+?>
