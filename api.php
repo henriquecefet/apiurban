@@ -368,7 +368,13 @@ EOF;
                         $hotspots["hotspot"][$i]["recomendacao"] == "Pouco recomendado";
                     }
                 } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
-                    $recomendacaoHoje = "Recomendado";
+                    if($crescimento_casos > 0.01 || $crescimento_mortes > 0.01) {
+                        $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
+                    }elseif ($crescimento_casos > 0.06 || $crescimento_mortes > 0.06) {
+                        $hotspots["hotspot"][$i]["recomendacao"] = "Pouco recomendado";
+                    }else {
+                        $hotspots["hotspot"][$i]["recomendacao"] = "Recomendado";
+                    }
                 }
                 $previsao = array();
                 array_push($hoje, $recomendacaoHoje);
