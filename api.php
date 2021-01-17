@@ -151,7 +151,7 @@ function recomendarHotspotClima(){
             }
             array_push($previsao, $previsaoData);
         }
-        $hotspot["hotspot"][0]["recomedacaoFutura"] = $previsao;
+        $hotspot["hotspot"][0]["recomendacaoFutura"] = $previsao;
         http_response_code(200);
         echo json_encode($hotspot);
     }
@@ -395,7 +395,7 @@ EOF;
                 }
                 $previsao = array();
                 array_push($hoje, $recomendacaoHoje);
-                $hotspots["hotspot"][$i]["recomedacao"] = $hoje;
+                $hotspots["hotspot"][$i]["recomendacao"] = $hoje;
                 for ($j = 1; $j < count($tempo["results"]["forecast"]); $j++) {
                     $previsaoData = array();
                     $diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
@@ -444,7 +444,7 @@ EOF;
                     }
                     array_push($previsao, $previsaoData);
                 }
-                $hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsao;
+                $hotspots["hotspot"][$i]["recomendacaoFutura"] = $previsao;
             }
             http_response_code(200);
             echo json_encode($hotspots);
@@ -506,7 +506,7 @@ EOF;
         }
         $previsao = array();
         array_push($hoje, $recomendacaoHoje);
-        $hotspot[0]["recomedacao"] = $hoje;
+        $hotspot[0]["recomendacao"] = $hoje;
         for($j = 1; $j < count($tempo["results"]["forecast"]); $j++){
             $previsaoData = array();
             $diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
@@ -555,7 +555,7 @@ EOF;
                 }
         array_push($previsao, $previsaoData);
         }
-        $hotspot[0]["recomedacaoFutura"] = $previsao;
+        $hotspot[0]["recomendacaoFutura"] = $previsao;
         http_response_code(200);
         echo json_encode($hotspot);
       }
