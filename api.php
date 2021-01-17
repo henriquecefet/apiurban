@@ -483,6 +483,7 @@ EOF;
                 $recomendacaoCovidHoje = "Nao recomendado";
             }elseif ($crescimento_casos > 0.012 || $crescimento_mortes > 0.012) {
                 $recomendacaoCovidHoje = "Pouco recomendado";
+            }
             else {
                 $recomendacaoCovidHoje = "Recomendado";
             }
