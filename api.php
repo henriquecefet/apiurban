@@ -42,10 +42,12 @@ function recomendarCidadeClima(){
                 $condicaoHoje = $tempo["results"]["forecast"][0]["condition"];
                 if($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain" ){
                     $recomendacaoHoje = "Nao recomendado";
-
                 }
                 elseif($condicaoHoje =="cloud" || $condicaoHoje =="cloudly_day"||$condicaoHoje =="fog"|| $condicaoHoje=="cloudly_night" ) {
                     $recomendacaoHoje  = "Pouco recomendado";
+                }
+                else{
+                  $recomendacaoHoje  = "Recomendado";
                 }
             }
             elseif($hotspots["hotspot"][$i]["ar-livre"] == f){
@@ -71,6 +73,9 @@ function recomendarCidadeClima(){
                     }
                     elseif($condicao == "cloud" ||  $condicao == "cloudly_day" || $condicao == "fog" ||  $condicao == "cloudly_night" ){
                         array_push($previsaoData, "Pouco recomendado");
+                    }
+                    else{
+                      $recomendacaoHoje  = "Recomendado";
                     }
                 }
                 elseif($hotspots["hotspot"][$i]["ar-livre"] == f){
@@ -352,6 +357,9 @@ EOF;
 
                     } elseif($condicaoHoje == "cloud" || $condicaoHoje == "cloudly_day" || $condicaoHoje == "fog" || $condicaoHoje == "cloudly_night") {
                         $recomendacaoHoje = "Pouco recomendado";
+                    }
+                    else{
+                      $recomendacaoHoje  = "Recomendado";
                     }
                     if($crescimento_casos > 0.02 || $crescimento_mortes > 0.02) {
                         $hotspots["hotspot"][$i]["recomendacao"] = "Nao recomendado";
