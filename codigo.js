@@ -45,7 +45,9 @@ function lerCidades(){
                    adicionarImagem(id,jx.hotspot[i].imagem, "200px", "320px");
                    adicionarParagrafo(id, jx.hotspot[i].nome);
                    for(let j = 0; j<jx.hotspot[i].recomendacaoFutura.length; j++){
-                      adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j]);
+                      adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j][0]+" - "+x.hotspot[i].recomendacaoFutura[j][1]);
+                      adicionarParagrafo(x.hotspot[i].recomendacaoFutura[j][3])
+                      adicionarParagrafo("");
                    }
                    let divpai = document.getElementById(pai);
                    divpai.onclick = function(){
