@@ -17,10 +17,8 @@ function lerCidades(){
                 	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "350px")
         			     adicionarParagrafo(id, jx.cidades[i].nome);
                    pai.addEventListener('click', function(){
-                    switch(titulo){
                       localStorage.setItem("cidade",jx.cidades[i].nome);
                       window.location.href = "listarecomendacoes.php";
-                    }
                   });
                 }
             });
