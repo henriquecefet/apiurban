@@ -32,7 +32,7 @@
 
 	.flex-container > div {
 	  width: 100px;
-	  margin: 10px;
+	  margin: 20px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
