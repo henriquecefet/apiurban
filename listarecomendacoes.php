@@ -47,7 +47,7 @@
     </div>
   </div>
   <script>
-    //window.onload = lerCidades;
+    window.onload =  lerHotspots;
   </script>
 </body>
 </html>
