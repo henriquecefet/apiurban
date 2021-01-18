@@ -14,7 +14,7 @@ function lerCidades(){
                 for(let i = 0; i<jx.cidades.length; i++){
                 	 let pai = adicionarDiv("row", "pai"+jx.cidades[i].nome, "card mb-4 shadow-sm");
                 	 let id = adicionarDiv(pai, jx.cidades[i].nome, "card-body");
-                	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "350px");
+                	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "320px");
         			     adicionarParagrafo(id, jx.cidades[i].nome);
                    let divpai = document.getElementById(pai);
                    divpai.onclick = function(){
@@ -42,7 +42,7 @@ function lerCidades(){
                for(let i = 0; i<jx.hotspot.length; i++){
                    let pai = adicionarDiv("row", "pai"+jx.hotspot[i].nome, "card mb-4 shadow-sm");
                    let id = adicionarDiv(pai, jx.hotspot[i].nome, "card-body");
-                   adicionarImagem(id,jx.hotspot[i].imagem, "200px", "350px");
+                   adicionarImagem(id,jx.hotspot[i].imagem, "200px", "320px");
                    adicionarParagrafo(id, jx.hotspot[i].nome);
                    for(let j = 0; j<jx.hotspot[i].recomendacaoFutura.length; j++){
                       adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j]);
