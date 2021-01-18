@@ -25,6 +25,7 @@
     .button2 {background-color: #008CBA;} /* Blue */
     .flex-container {
 	  display: flex;
+	  flex-direction: row;
 	  align-items: center;
       justify-content: center;
 	}
@@ -32,6 +33,9 @@
 	.flex-container > div {
 	  width: 100px;
 	  margin: 10px;
+	  flex-direction: row;
+	  align-items: center;
+      justify-content: center;
 	  text-align: center;
 	  line-height: 75px;
 	  font-size: 30px;
