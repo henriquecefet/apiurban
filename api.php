@@ -475,9 +475,7 @@ EOF;
         $crescimento_mortes = chamarFuncaoSQL("getmortes", $city["cidades"][0]["estado"]);
         $hotspot["hotspot"][0]["situacao_covid"]["crescimento_casos"] = round($crescimento_casos*100, 4);
         $hotspot["hotspot"][0]["situacao_covid"]["crescimento_mortes"] = round($crescimento_mortes*100, 4);
-        echo "Passou por aqui 1<br>";
         if($hotspot["hotspot"][0]["ar-livre"] == t){
-            echo "Passou por aqui 2<br>";
             $condicaoHoje = $tempo["results"]["forecast"][0]["condition"];
             if($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain" ){
                 $recomendacaoHoje = "Nao recomendado";
@@ -506,7 +504,6 @@ EOF;
             }
         }
         elseif($hotspot["hotspot"][0]["ar-livre"] == f){
-            echo "Passou por aqui 3<br>";
             if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                  $recomendacaoHoje  = "Nao recomendado";
             }elseif ($crescimento_casos > $GLOBALS['taxaFechadaMedia'] || $crescimento_mortes > $GLOBALS['taxaFechadaMedia']) {
@@ -532,7 +529,8 @@ EOF;
             $recomendacaoCovid = "";
             $recomendacaoGeral = "";
             $condicao = $tempo["results"]["forecast"][$j]["condition"];
-            if ($hotspot["hotspot"][0]["ar-livre"] == t) {
+            if ($hotspot["hotspot"][0]["ar-livre"] == t) { 
+                echo "Passou por aqui 1<br>";
                 if ($condicao == "storm" || $condicao == "hail" || $condicao == "rain") {
                     $recomendacaoData = "Nao recomendado";
                 } elseif ($condicao == "cloud" || $condicao == "cloudly_day" || $condicao == "fog" || $condicao == "cloudly_night") {
@@ -559,15 +557,16 @@ EOF;
                     $recomendacaoGeral = $recomendacaoData;
                 }
                 array_push($previsaoData,  $recomendacaoGeral);
-                } elseif ($hotspots["hotspot"][0]["ar-livre"] == f) {
-                    if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
-                        array_push($previsaoData, "Nao recomendado");
-                    }elseif ($crescimento_casos > $GLOBALS['taxaFechadaMedia'] || $crescimento_mortes > $GLOBALS['taxaFechadaMedia']) {
-                        array_push($previsaoData, "Pouco recomendado");
-                    }else {
-                        array_push($previsaoData, "Recomendado");
-                    }
-                }
+            } elseif ($hotspots["hotspot"][0]["ar-livre"] == f) {
+                echo "Passou por aqui 2<br>";
+                if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
+                    array_push($previsaoData, "Nao recomendado");
+                }elseif ($crescimento_casos > $GLOBALS['taxaFechadaMedia'] || $crescimento_mortes > $GLOBALS['taxaFechadaMedia']) {
+                    array_push($previsaoData, "Pouco recomendado");
+                  }else {
+                      array_push($previsaoData, "Recomendado");
+                   }
+             }
         array_push($previsao, $previsaoData);
         }
         $hotspot["hotspot"][0]["recomendacaoFutura"] = $previsao;
