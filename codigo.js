@@ -47,6 +47,7 @@ function lerCidades(){
                    for(let j = 0; j<jx.hotspot[i].recomendacaoFutura.length; j++){
                       adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j]);
                    }
+                   let divpai = document.getElementById(pai);
                    divpai.onclick = function(){
                       navigator.geolocation.getCurrentPosition(showPosition,jx.hotspot[i].latitude, jx.hotspot[i].longitude);
                   };
