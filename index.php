@@ -1,4 +1,3 @@
-<?php header('Access-Control-Allow-Origin: *'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +22,17 @@
 
     .button1 {background-color: #4CAF50;} /* Green */
     .button2 {background-color: #008CBA;} /* Blue */
+    .flex-container {
+	  display: flex;
+	}
+
+	.flex-container > div {
+	  width: 100px;
+	  margin: 10px;
+	  text-align: center;
+	  line-height: 75px;
+	  font-size: 30px;
+	}
   </style>
 </head>
 <body style="background-color:#f8f9fa">
@@ -51,7 +61,7 @@
                 	 let pai = adicionarDiv("row", "pai"+jx.cidades[i].nome, "card mb-4 shadow-sm")
                 	 let id = adicionarDiv(pai, jx.cidades[i].nome, "card-body");
                 	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "200px")
-        			 adicionarParagrafo(id,"Nome da Cidade: "+ jx.cidades[i].nome);
+        			 adicionarParagrafo(id, jx.cidades[i].nome);
                 }
             });
   	}
