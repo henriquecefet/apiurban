@@ -34,22 +34,25 @@
   </div>
   <script>
   	function lerCidades(){
-  		 $.ajax({
-		    url: 'https://urbanweb.herokuapp.com/androidlercidade.php',
-		    dataType: 'application/json',
-		    complete: function(data){
-		        alert(data.status)
-		        alert(data.description);
-		        // for results you have to iterate because it is an array
-		        var len =  data.results.length;
-		        for(var i=0;i<len;i++ ){
-		            alert(data.results[i]);
-		        }
-		    },
-		    success: function(data){
-		        alert(data)
-		    }
-		})
+  		  var settings = {
+              "url": "https://urbanweb.herokuapp.com/androidlercidade.php",
+               "method": "GET",
+               "timeout": 0,
+               "processData": false,
+               "mimeType": "multipart/form-data",
+               "contentType": false,
+         
+          };
+  		    $.ajax(settings).done(function (response) {
+                console.log(response);
+                var jx = JSON.parse(response);
+                for(let i = 0; i<jx.cidades.length){
+                	 let pai = adicionarDiv("row", "pai"+jx.cidades[i].nome, "card mb-4 shadow-sm")
+                	 let id = adicionarDiv(pai, jx.cidades[i].nome, "card-body");
+                	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "200px")
+        			 adicionarParagrafo(id,"Nome da Cidade: "+ jx.cidades[i].nome);
+                }
+            });
   	}
 
     function adicionarParagrafo(pai, texto){
