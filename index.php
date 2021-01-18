@@ -21,13 +21,14 @@
       cursor: pointer;
     }
 
-    .button1 {background-color: #4CAF50;} /* Green */
-    .button2 {background-color: #008CBA;} /* Blue */
+    .button1 {background-color: #4CAF50;} 
+    .button2 {background-color: #008CBA;} 
     .flex-container {
 	  display: flex;
 	  flex-direction: row;
 	  align-items: center;
       justify-content: center;
+      margin: 0 auto;
 	}
 
 	.flex-container > div {
@@ -39,6 +40,7 @@
 	  text-align: center;
 	  line-height: 75px;
 	  font-size: 30px;
+	  margin: 0 auto;
 	}
   </style>
 </head>
