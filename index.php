@@ -42,6 +42,10 @@
 	  font-size: 30px;
 	  margin: 0 auto;
 	}
+	.row {
+    justify-content: center;
+    
+  }
   </style>
 </head>
 <body style="background-color:#f8f9fa">
