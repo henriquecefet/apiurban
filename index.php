@@ -26,8 +26,8 @@
 </head>
 <body style="background-color:#f8f9fa">
   <div class="jumbotron text-center">
-    <h1>Exemplo de firebase</h1>
-    <p>Crud em Banco de Dados em Árvore</p>
+    <h1>Urban Web</h1>
+    <p>Explore cidades do mundo.</p>
     <div class="row" id="row">
     
     </div>
@@ -99,6 +99,7 @@
       botao.appendChild(document.createTextNode(titulo));
       document.getElementById(pai).appendChild(botao);
     }
+    window.onload = lerCidades;
   </script>
 </body>
 </html>
