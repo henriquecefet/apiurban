@@ -1,6 +1,8 @@
 <?php
 include("conexao.php");
 header("Content-type: text/html; charset=utf-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
 $GLOBALS['taxaFechadaAlta'] = 0.01;
 $GLOBALS['taxaFechadaMedia'] = 0.006;
 $GLOBALS['taxaAbertaAlta'] = 0.02;
