@@ -530,6 +530,7 @@ EOF;
             $recomendacaoGeral = "";
             $condicao = $tempo["results"]["forecast"][$j]["condition"];
             if ($hotspots["hotspot"][0]["ar-livre"] == t) {
+                echo "Passou por aqui 1 <br>";
                 if ($condicao == "storm" || $condicao == "hail" || $condicao == "rain") {
                     $recomendacaoData = "Nao recomendado";
                 } elseif ($condicao == "cloud" || $condicao == "cloudly_day" || $condicao == "fog" || $condicao == "cloudly_night") {
