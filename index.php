@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Exemplo de Firebase</title>
+  <title>Urban Web</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -46,7 +46,7 @@
   		    $.ajax(settings).done(function (response) {
                 console.log(response);
                 var jx = JSON.parse(response);
-                for(let i = 0; i<jx.cidades.length){
+                for(let i = 0; i<jx.cidades.length; i++){
                 	 let pai = adicionarDiv("row", "pai"+jx.cidades[i].nome, "card mb-4 shadow-sm")
                 	 let id = adicionarDiv(pai, jx.cidades[i].nome, "card-body");
                 	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "200px")
