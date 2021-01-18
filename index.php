@@ -24,6 +24,8 @@
     .button2 {background-color: #008CBA;} /* Blue */
     .flex-container {
 	  display: flex;
+	  align-items: center;
+      justify-content: center;
 	}
 
 	.flex-container > div {
