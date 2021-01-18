@@ -455,7 +455,7 @@ EOF;
                 $hotspots["hotspot"][$i]["recomendacaoFutura"] = $previsao;
             }
             http_response_code(200);
-            echo json_encode($hotspots);
+            echo json_encode($hotspots, JSON_UNESCAPED_UNICODE);
         } else {
             http_response_code(404);
         }
