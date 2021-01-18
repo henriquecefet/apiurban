@@ -12,9 +12,9 @@ function lerCidades(){
                 console.log(response);
                 var jx = JSON.parse(response);
                 for(let i = 0; i<jx.cidades.length; i++){
-                	 let pai = adicionarDiv("row", "pai"+jx.cidades[i].nome, "card mb-4 shadow-sm")
+                	 let pai = adicionarDiv("row", "pai"+jx.cidades[i].nome, "card mb-4 shadow-sm");
                 	 let id = adicionarDiv(pai, jx.cidades[i].nome, "card-body");
-                	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "350px")
+                	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "350px");
         			     adicionarParagrafo(id, jx.cidades[i].nome);
                    let divpai = document.getElementById(pai);
                    divpai.onclick = function(){
@@ -25,7 +25,7 @@ function lerCidades(){
             });
   	}
   function lerHotspots(){
-    let cidade = localStorage.getItem("storageName");
+    let cidade = localStorage.getItem("cidade");
     let link = "https://apiurban.herokuapp.com/api.php?funcao=recomendarCidadeClimaCovid&cidade="+cidade;
     var settings = {
               "url": link,
@@ -40,9 +40,9 @@ function lerCidades(){
               console.log(response);
                var jx = JSON.parse(response);
                for(let i = 0; i<jx.hotspot.length; i++){
-                   let pai = adicionarDiv("row", "pai"+jx.hotspot[i].nome, "card mb-4 shadow-sm")
+                   let pai = adicionarDiv("row", "pai"+jx.hotspot[i].nome, "card mb-4 shadow-sm");
                    let id = adicionarDiv(pai, jx.hotspot[i].nome, "card-body");
-                   adicionarImagem(id,jx.hotspot[i].imagem, "200px", "350px")
+                   adicionarImagem(id,jx.hotspot[i].imagem, "200px", "350px");
                    adicionarParagrafo(id, jx.hotspot[i].nome);
                    adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[0]+" - "+ jx.hotspot[i].recomendacaoFutura[1]);
                    adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[2]);
