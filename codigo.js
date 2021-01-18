@@ -46,7 +46,7 @@ function lerCidades(){
                    adicionarParagrafo(id, jx.hotspot[i].nome);
                    for(let j = 0; j<jx.hotspot[i].recomendacaoFutura.length; j++){
                       adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j][0]+" - "+jx.hotspot[i].recomendacaoFutura[j][1]);
-                      adicionarParagrafo(id,jx.hotspot[i].recomendacaoFutura[j][3])
+                      adicionarParagrafo(id,jx.hotspot[i].recomendacaoFutura[j][2])
                       adicionarParagrafo(id,"");
                    }
                    let divpai = document.getElementById(pai);
