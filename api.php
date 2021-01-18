@@ -93,7 +93,7 @@ function recomendarCidadeClima(){
             $hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsao;
         }
         http_response_code(200);
-        echo json_encode($hotspots);
+        echo json_encode($hotspots, JSON_UNESCAPED_UNICODE);
     }
     else{
         http_response_code(404);
@@ -157,7 +157,7 @@ function recomendarHotspotClima(){
         }
         $hotspot["hotspot"][0]["recomendacaoFutura"] = $previsao;
         http_response_code(200);
-        echo json_encode($hotspot);
+        echo json_encode($hotspot, JSON_UNESCAPED_UNICODE);
     }
     else{
         http_response_code(404);
@@ -264,7 +264,7 @@ function recomendarCidadeCovid(){
             }
         }
         http_response_code(200);
-        echo json_encode($hotspots);
+        echo json_encode($hotspots, JSON_UNESCAPED_UNICODE);
     }
     else{
         http_response_code(404);
@@ -302,7 +302,7 @@ function recomendarHotspotCovid(){
             }
         }
         http_response_code(200);
-        echo json_encode($hotspot);
+        echo json_encode($hotspot, JSON_UNESCAPED_UNICODE);
     }
     else{
         http_response_code(404);
@@ -569,7 +569,7 @@ EOF;
         }
         $hotspot["hotspot"][0]["recomendacaoFutura"] = $previsao;
         http_response_code(200);
-        echo json_encode($hotspot);
+        echo json_encode($hotspot, JSON_UNESCAPED_UNICODE);
       }
       else{
         http_response_code(404);
