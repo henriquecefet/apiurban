@@ -16,7 +16,7 @@ function lerCidades(){
                 	 let id = adicionarDiv(pai, jx.cidades[i].nome, "card-body");
                 	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "350px")
         			     adicionarParagrafo(id, jx.cidades[i].nome);
-                   let divpai = document.getElementById(pai).value;
+                   let divpai = document.getElementById(pai);
                    divpai.onclick = function(){
                       localStorage.setItem("cidade",jx.cidades[i].nome);
                       window.location.href = "listarecomendacoes.php";
