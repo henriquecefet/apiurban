@@ -49,13 +49,17 @@ function lerCidades(){
                    }
                    let divpai = document.getElementById(pai);
                    divpai.onclick = function(){
-                      navigator.geolocation.getCurrentPosition(showPosition,jx.hotspot[i].latitude, jx.hotspot[i].longitude);
+                      localStorage.setItem("latitude",jx.hotspot[i].latitude);
+                      localStorage.setItem("longitude",jx.hotspot[i].longitude);
+                      navigator.geolocation.getCurrentPosition(showPosition);
                   };
                   
               }
             });
   }
-  function showPosition(position, latitude, longitude) {
+  function showPosition(position) {
+    let latitude = localStorage.getItem("latitude");
+    let longitude = localStorage.getItem("longitude");
     window.location.href = "https://www.google.com.br/maps/dir/"+position.coords.latitude+","+position.coords.longitude+"/"+latitude+","+longitude;
   }
 
