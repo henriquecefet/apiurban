@@ -530,7 +530,6 @@ EOF;
             $recomendacaoGeral = "";
             $condicao = $tempo["results"]["forecast"][$j]["condition"];
             if ($hotspot["hotspot"][0]["ar-livre"] == t) { 
-                echo "Passou por aqui 1<br>";
                 if ($condicao == "storm" || $condicao == "hail" || $condicao == "rain") {
                     $recomendacaoData = "Nao recomendado";
                 } elseif ($condicao == "cloud" || $condicao == "cloudly_day" || $condicao == "fog" || $condicao == "cloudly_night") {
@@ -548,17 +547,19 @@ EOF;
                 }
                 if($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Pouco recomendado") {
                     $recomendacaoGeral == "Nao recomendado";
+                     array_push($previsaoData,  $recomendacaoGeral);
                 } elseif($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Recomendado") {
                     $recomendacaoGeral == "Nao recomendado";
+                    array_push($previsaoData,  $recomendacaoGeral);
                 } elseif($recomendacaoData == "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
                     $recomendacaoGeral == "Pouco recomendado";
+                    array_push($previsaoData,  $recomendacaoGeral);
                 }
                 else{
                     $recomendacaoGeral = $recomendacaoData;
+                    array_push($previsaoData,  $recomendacaoGeral);
                 }
-                array_push($previsaoData,  $recomendacaoGeral);
             } elseif ($hotspot["hotspot"][0]["ar-livre"] == f) {
-                echo "Passou por aqui 2<br>";
                 if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                     array_push($previsaoData, "Nao recomendado");
                 }elseif ($crescimento_casos > $GLOBALS['taxaFechadaMedia'] || $crescimento_mortes > $GLOBALS['taxaFechadaMedia']) {
