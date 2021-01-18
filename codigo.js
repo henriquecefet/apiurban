@@ -15,7 +15,13 @@ function lerCidades(){
                 	 let pai = adicionarDiv("row", "pai"+jx.cidades[i].nome, "card mb-4 shadow-sm")
                 	 let id = adicionarDiv(pai, jx.cidades[i].nome, "card-body");
                 	 adicionarImagem(id,jx.cidades[i].imagem, "200px", "350px")
-        			 adicionarParagrafo(id, jx.cidades[i].nome);
+        			     adicionarParagrafo(id, jx.cidades[i].nome);
+                   pai.addEventListener('click', function(){
+                    switch(titulo){
+                      localStorage.setItem("cidade",jx.cidades[i].nome);
+                      window.location.href = "listarecomendacoes.php";
+                    }
+                  });
                 }
             });
   	}
