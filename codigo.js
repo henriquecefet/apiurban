@@ -47,10 +47,15 @@ function lerCidades(){
                    for(let j = 0; j<jx.hotspot[i].recomendacaoFutura.length; j++){
                       adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j]);
                    }
-        
+                   divpai.onclick = function(){
+                      navigator.geolocation.getCurrentPosition(showPosition,jx.hotspot[i].latitude, jx.hotspot[i].longitude);
+                  };
                   
               }
             });
+  }
+  function showPosition(position, latitude, longitude) {
+    window.location.href = "https://www.google.com.br/maps/dir/"+position.coords.latitude+","+position.coords.longitude+"/"+latitude+","+longitude;
   }
 
     function adicionarParagrafo(pai, texto){
