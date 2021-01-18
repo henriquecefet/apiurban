@@ -44,8 +44,10 @@ function lerCidades(){
                    let id = adicionarDiv(pai, jx.hotspot[i].nome, "card-body");
                    adicionarImagem(id,jx.hotspot[i].imagem, "200px", "350px");
                    adicionarParagrafo(id, jx.hotspot[i].nome);
-                   adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[0]+" - "+ jx.hotspot[i].recomendacaoFutura[1]);
-                   adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[2]);
+                   for(let j = 0; j<jx.hotspot[i].recomendacaoFutura.length; j++){
+                      adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j]);
+                   }
+        
                   
               }
             });
