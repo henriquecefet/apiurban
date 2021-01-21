@@ -557,22 +557,19 @@ EOF;
                 }
                 if($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Pouco recomendado") {
                     $recomendacaoGeral = "Nao recomendado";
-                     echo $recomendacaoData."<br>";
                 } elseif($recomendacaoData = "Nao recomendado" && $recomendacaoCovid == "Recomendado") {
                     $recomendacaoGeral = "Nao recomendado";
-                     echo $recomendacaoData."<br>";
                 } elseif($recomendacaoData = "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
                     $recomendacaoGeral = "Pouco recomendado";
-                     echo $recomendacaoData."<br>";
                 } elseif($recomendacaoCovid == "Nao recomendado"){
                     $recomendacaoGeral = "Nao recomendado";
-                     echo $recomendacaoData."<br>";
                 }
-                else{
-                     echo $recomendacaoData."<br>";
-                    $recomendacaoGeral = $recomendacaoData;
+                if(isset($recomendacaoGeral) && $recomendacaoGeral!=""){
+                    array_push($previsaoData, $recomendacaoGeral);
                 }
-                array_push($previsaoData, $recomendacaoGeral);
+                elseif(isset($recomendacaoData) ){
+                    array_push($previsaoData, $recomendacaoData);
+                }
             } elseif ($hotspot["hotspot"][0]["ar-livre"] == f) {
                 if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
                     array_push($previsaoData, "Nao recomendado");
