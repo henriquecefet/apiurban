@@ -555,6 +555,7 @@ EOF;
                 }else {
                     $recomendacaoCovid = "Recomendado";
                 }
+                echo $recomendacaoData."<br>";
                 if($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Pouco recomendado") {
                     $recomendacaoGeral = "Nao recomendado";
                 } elseif($recomendacaoData = "Nao recomendado" && $recomendacaoCovid == "Recomendado") {
@@ -565,7 +566,6 @@ EOF;
                     $recomendacaoGeral = "Nao recomendado";
                 }
                 else{
-                    echo $recomendacaoData."<br>";
                     $recomendacaoGeral = $recomendacaoData;
                 }
                 array_push($previsaoData, $recomendacaoGeral);
