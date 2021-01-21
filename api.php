@@ -498,11 +498,11 @@ EOF;
                 $recomendacaoCovidHoje = "Recomendado";
             }
             if($recomendacaoHoje == "Nao recomendado" && $recomendacaoCovidHoje == "Pouco recomendado"){
-                   $recomendacaoHoje == "Nao recomendado";
+                   $recomendacaoHoje = "Nao recomendado";
             } elseif($recomendacaoHoje == "Nao recomendado" && $recomendacaoCovidHoje == "Recomendado") {
-                $recomendacaoHoje == "Nao recomendado";
+                $recomendacaoHoje = "Nao recomendado";
             } elseif($recomendacaoHoje == "Pouco recomendado" && $recomendacaoCovidHoje == "Recomendado") {
-                $recomendacaoHoje == "Pouco recomendado";
+                $recomendacaoHoje = "Pouco recomendado";
             }
         }
         elseif($hotspot["hotspot"][0]["ar-livre"] == f){
@@ -553,9 +553,6 @@ EOF;
                     $recomendacaoGeral = "Nao recomendado";
                 } elseif($recomendacaoData = "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
                     $recomendacaoGeral = "Pouco recomendado";
-                }
-                else{
-                    $recomendacaoGeral = $recomendacaoData;
                 }
                 array_push($previsaoData,  $recomendacaoGeral);
             } elseif ($hotspot["hotspot"][0]["ar-livre"] == f) {
