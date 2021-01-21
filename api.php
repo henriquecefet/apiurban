@@ -434,22 +434,16 @@ EOF;
                         }
                         if($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Pouco recomendado") {
                             $recomendacaoGeral = "Nao recomendado";
-                             echo $recomendacaoGeral."<br>";
                         } elseif($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Recomendado") {
                              $recomendacaoGeral = "Nao recomendado";
-                             echo $recomendacaoGeral."<br>";
                         } elseif($recomendacaoData = "Pouco recomendado" && $recomendacaoCovid == "Recomendado"){
                              $recomendacaoGeral = "Pouco recomendado";
-                             echo $recomendacaoGeral."<br>";
                         }elseif($recomendacaoCovid == "Nao recomendado"){
                             $recomendacaoGeral = "Nao recomendado";
-                            echo $recomendacaoGeral."<br>";
                         }
                         else{
                             $recomendacaoGeral = $recomendacaoData;
-                            echo $recomendacaoGeral."<br>";
                         }
-                        echo $recomendacaoGeral."<br>";
                         array_push($previsaoData,  $recomendacaoGeral);
                     } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
                        if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
@@ -567,7 +561,7 @@ EOF;
                     $recomendacaoGeral = "Nao recomendado";
                 } elseif($recomendacaoData = "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
                     $recomendacaoGeral = "Pouco recomendado";
-                } elseif( $recomendacaoCovid == "Nao recomendado"){
+                } elseif($recomendacaoCovid == "Nao recomendado"){
                     $recomendacaoGeral = "Nao recomendado";
                 }
                 else{
