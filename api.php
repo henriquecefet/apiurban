@@ -402,7 +402,7 @@ EOF;
                 $previsao = array();
                 array_push($hoje, $recomendacaoHoje);
                 $hotspots["hotspot"][$i]["recomendacao"] = $hoje;
-                for ($j = 1; $j < count($tempo["results"]["forecast"]); $j++) {
+                for($j = 1; $j < count($tempo["results"]["forecast"]); $j++) {
                     $previsaoData = array();
                     $diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
                     if ($diaSemana == "Sáb") {
@@ -449,6 +449,7 @@ EOF;
                             $recomendacaoGeral = $recomendacaoData;
                             echo $recomendacaoGeral."<br>";
                         }
+                        echo $recomendacaoGeral."<br>";
                         array_push($previsaoData,  $recomendacaoGeral);
                     } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
                        if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
