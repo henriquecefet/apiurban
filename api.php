@@ -548,7 +548,6 @@ EOF;
                 else{
                     $recomendacaoData = "Recomendado";
                 }
-                echo $recomendacaoData."<br>";
                 if($crescimento_casos > $GLOBALS['taxaAbertaAlta'] || $crescimento_mortes > $GLOBALS['taxaAbertaAlta']) {
                     $recomendacaoCovid = "Nao recomendado";
                 }elseif ($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
@@ -566,6 +565,7 @@ EOF;
                     $recomendacaoGeral = "Nao recomendado";
                 }
                 else{
+                    echo $recomendacaoData."<br>";
                     $recomendacaoGeral = $recomendacaoData;
                 }
                 array_push($previsaoData, $recomendacaoGeral);
