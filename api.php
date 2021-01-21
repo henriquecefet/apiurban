@@ -427,7 +427,7 @@ EOF;
                         }
                         if($crescimento_casos > $GLOBALS['taxaAbertaAlta'] || $crescimento_mortes > $GLOBALS['taxaAbertaAlta']) {
                           $recomendacaoCovid = "Nao recomendado";
-                        }elseif ($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
+                        }elseif ($crescimento_casos > $GLOBALS['taxaAbertaMedia'] || $crescimento_mortes > $GLOBALS['taxaAbertaMedia']) {
                             $recomendacaoCovid = "Pouco recomendado";
                         }else {
                             $recomendacaoCovid = "Recomendado";
@@ -436,7 +436,7 @@ EOF;
                             $recomendacaoGeral = "Nao recomendado";
                         } elseif($recomendacaoData == "Nao recomendado" && $recomendacaoCovid == "Recomendado") {
                              $recomendacaoGeral = "Nao recomendado";
-                        } elseif($recomendacaoData = "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
+                        } elseif($recomendacaoData = "Pouco recomendado" && $recomendacaoCovid == "Recomendado"){
                              $recomendacaoGeral = "Pouco recomendado";
                         }elseif($recomendacaoCovid == "Nao recomendado"){
                             $recomendacaoGeral = "Nao recomendado";
