@@ -370,7 +370,7 @@ EOF;
                     if ($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain") {
                         $recomendacaoHoje = "Nao recomendado";
 
-                    } elseif($condicaoHoje == "cloud" || $condicaoHoje == "cloudly_day" || $condicaoHoje == "fog" || $condicaoHoje == "cloudly_night") {
+                    } elseif($condicaoHoje == "cloud" || $condicaoHoje == "fog") {
                         $recomendacaoHoje = "Pouco recomendado";
                     }
                     else{
@@ -419,7 +419,7 @@ EOF;
                     if ($hotspots["hotspot"][$i]["ar-livre"] == t) {
                         if ($condicao == "storm" || $condicao == "hail" || $condicao == "rain") {
                             $recomendacaoData = "Nao recomendado";
-                        } elseif ($condicao == "cloud" || $condicao == "cloudly_day" || $condicao == "fog" || $condicao == "cloudly_night") {
+                        } elseif ($condicao == "cloud"  || $condicao == "fog") {
                             $recomendacaoData = "Pouco recomendado";
                         }
                          else{
@@ -483,7 +483,7 @@ EOF;
                 $recomendacaoHoje = "Nao recomendado";
 
             }
-            elseif($condicaoHoje =="cloud" || $condicaoHoje =="cloudly_day"||$condicaoHoje =="fog"|| $condicaoHoje=="cloudly_night" ) {
+            elseif($condicaoHoje =="cloud" || $condicaoHoje =="fog" ) {
                 $recomendacaoHoje  = "Pouco recomendado";
             }
             else{
