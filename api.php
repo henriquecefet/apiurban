@@ -52,7 +52,7 @@ function recomendarCidadeClima(){
                 if($condicaoHoje == "storm" || $condicaoHoje == "hail" || $condicaoHoje == "rain" ){
                     $recomendacaoHoje = "Nao recomendado";
                 }
-                elseif($condicaoHoje =="cloud" || $condicaoHoje =="cloudly_day"||$condicaoHoje =="fog"|| $condicaoHoje=="cloudly_night" ) {
+                elseif($condicaoHoje =="cloud" ||$condicaoHoje =="fog" ) {
                     $recomendacaoHoje  = "Pouco recomendado";
                 }
                 else{
@@ -80,7 +80,7 @@ function recomendarCidadeClima(){
                     if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
                         array_push($previsaoData, "Nao recomendado");
                     }
-                    elseif($condicao == "cloud" ||  $condicao == "cloudly_day" || $condicao == "fog" ||  $condicao == "cloudly_night" ){
+                    elseif($condicao == "cloud" || $condicao == "fog" ){
                         array_push($previsaoData, "Pouco recomendado");
                     }
                     else{
@@ -117,7 +117,7 @@ function recomendarHotspotClima(){
                 $recomendacaoHoje = "Nao recomendado";
 
             }
-            elseif($condicaoHoje =="cloud" || $condicaoHoje =="cloudly_day"||$condicaoHoje =="fog"|| $condicaoHoje=="cloudly_night" ) {
+            elseif($condicaoHoje =="cloud" ||$condicaoHoje =="fog" ) {
                 $recomendacaoHoje  = "Pouco recomendado";
             }
             else{
@@ -145,7 +145,7 @@ function recomendarHotspotClima(){
                 if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
                     array_push($previsaoData, "Nao recomendado");
                 }
-                elseif($condicao == "cloud" ||  $condicao == "cloudly_day" || $condicao == "fog" ||  $condicao == "cloudly_night" ){
+                elseif($condicao == "cloud"  || $condicao == "fog" ){
                     array_push($previsaoData, "Pouco recomendado");
                 }
                 else{
