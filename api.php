@@ -534,12 +534,12 @@ EOF;
             if ($hotspot["hotspot"][0]["ar-livre"] == t) { 
                 if ($condicao == "storm" || $condicao == "hail" || $condicao == "rain") {
                     $recomendacaoData = "Nao recomendado";
-                } elseif ($condicao == "cloud" || $condicao == "cloudly_day" || $condicao == "fog" || $condicao == "cloudly_night") {
+                } elseif ($condicao == "cloud"  || $condicao == "fog" ) {
                     $recomendacaoData = "Pouco recomendado";
-                        }
+                }
                 else{
                     $recomendacaoData = "Recomendado";
-                        }
+                }
                 if($crescimento_casos > $GLOBALS['taxaAbertaAlta'] || $crescimento_mortes > $GLOBALS['taxaAbertaAlta']) {
                     $recomendacaoCovid = "Nao recomendado";
                 }elseif ($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
