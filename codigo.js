@@ -44,6 +44,7 @@ function lerCidades(){
                    let id = adicionarDiv(pai, jx.hotspot[i].nome, "card-body");
                    adicionarImagem(id,jx.hotspot[i].imagem, "200px", "320px");
                    adicionarParagrafo(id, jx.hotspot[i].nome);
+                   adicionarParagrafo(id, "Situação da pandemia:");
                    for(let j = 0; j<jx.hotspot[i].recomendacaoFutura.length; j++){
                       adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j][0]+" - "+jx.hotspot[i].recomendacaoFutura[j][1]);
                       adicionarParagrafo(id,jx.hotspot[i].recomendacaoFutura[j][2])
