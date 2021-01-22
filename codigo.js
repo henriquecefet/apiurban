@@ -35,7 +35,7 @@ function lerCidades(){
                "mimeType": "multipart/form-data",
                "contentType": false,
          
-    };
+          };
     $.ajax(settings).done(function (response) {
               console.log(response);
                var jx = JSON.parse(response);
@@ -45,6 +45,8 @@ function lerCidades(){
                    adicionarImagem(id,jx.hotspot[i].imagem, "200px", "320px");
                    adicionarParagrafo(id, jx.hotspot[i].nome);
                    adicionarParagrafo(id, "Situação da pandemia:");
+                   adicionarParagrafo(id, "Crescimento diário de casos:"+jx.situacao_covid.crescimento_casos+"%");
+                   adicionarParagrafo(id, "Crescimento diário de óbitos:"+jx.situacao_covid.crescimento_mortes+"%");
                    for(let j = 0; j<jx.hotspot[i].recomendacaoFutura.length; j++){
                       adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j][0]+" - "+jx.hotspot[i].recomendacaoFutura[j][1]);
                       adicionarParagrafo(id,jx.hotspot[i].recomendacaoFutura[j][2])
