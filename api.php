@@ -384,11 +384,11 @@ EOF;
                         $hotspots["hotspot"][$i]["recomendacao"] = "Recomendado";
                     }
                     if($recomendacaoHoje == "Não recomendado" && $hotspots["hotspot"][$i]["recomendacao"] == "Pouco recomendado") {
-                        $hotspots["hotspot"][$i]["recomendacao"] == "Não recomendado";
+                        $hotspots["hotspot"][$i]["recomendacao"] = "Não recomendado";
                     } elseif($recomendacaoHoje == "Não recomendado" && $hotspots["hotspot"][$i]["recomendacao"] == "Recomendado") {
-                        $hotspots["hotspot"][$i]["recomendacao"] == "Não recomendado";
+                        $hotspots["hotspot"][$i]["recomendacao"] = "Não recomendado";
                     } elseif($recomendacaoHoje == "Pouco recomendado" && $hotspots["hotspot"][$i]["recomendacao"] == "Recomendado") {
-                        $hotspots["hotspot"][$i]["recomendacao"] == "Pouco recomendado";
+                        $hotspots["hotspot"][$i]["recomendacao"] = "Pouco recomendado";
                     }
                 } elseif ($hotspots["hotspot"][$i]["ar-livre"] == f) {
                     if($crescimento_casos > $GLOBALS['taxaFechadaAlta'] || $crescimento_mortes > $GLOBALS['taxaFechadaAlta']) {
