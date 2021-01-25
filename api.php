@@ -549,9 +549,9 @@ EOF;
                 }
                 if($recomendacaoData == "Não recomendado" && $recomendacaoCovid == "Pouco recomendado") {
                     $recomendacaoGeral = "Não recomendado";
-                } elseif($recomendacaoData = "Não recomendado" && $recomendacaoCovid == "Recomendado") {
+                } elseif($recomendacaoData == "Não recomendado" && $recomendacaoCovid == "Recomendado") {
                     $recomendacaoGeral = "Não recomendado";
-                } elseif($recomendacaoData = "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
+                } elseif($recomendacaoData == "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
                     $recomendacaoGeral = "Pouco recomendado";
                 }
                 array_push($previsaoData,  $recomendacaoData);
