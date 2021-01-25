@@ -1,6 +1,6 @@
 function lerCidades(){
   		  var settings = {
-              "url": "https://urbanweb.herokuapp.com/androidlercidade.php",
+              "url": "https://apiurban.herokuapp.com/api.php?funcao=lerCidades",
                "method": "GET",
                "timeout": 0,
                "processData": false,
