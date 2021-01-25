@@ -31,6 +31,9 @@ if(isset($_GET['funcao'])){
         case "recomendarHotspotClimaCovid":
             recomendarHotspotClimaCovid();
             break;
+        case "lerCidades":
+            lerCidades();
+            break;
     }
 }
 else{
@@ -573,5 +576,10 @@ EOF;
       else{
         http_response_code(404);
       }
+    }
+    function lerCidades(){
+        $cidades = lerJSON("https://urbanweb.herokuapp.com/androidlercidade.php", "");
+        http_response_code(200);
+        echo json_encode($cidades, JSON_UNESCAPED_UNICODE);
     }
 ?>
