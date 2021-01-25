@@ -433,11 +433,11 @@ EOF;
                             $recomendacaoCovid = "Recomendado";
                         }
                         if($recomendacaoData == "Não recomendado" && $recomendacaoCovid == "Pouco recomendado") {
-                            $recomendacaoGeral == "Não recomendado";
+                            $recomendacaoGeral = "Não recomendado";
                         } elseif($recomendacaoData == "Não recomendado" && $recomendacaoCovid == "Recomendado") {
-                             $recomendacaoGeral == "Não recomendado";
+                             $recomendacaoGeral = "Não recomendado";
                         } elseif($recomendacaoData == "Pouco recomendado" && $recomendacaoCovid == "Recomendado") {
-                             $recomendacaoGeral == "Pouco recomendado";
+                             $recomendacaoGeral = "Pouco recomendado";
                         }
                         else{
                             $recomendacaoGeral = $recomendacaoData;
