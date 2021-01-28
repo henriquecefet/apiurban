@@ -67,7 +67,7 @@ function recomendarCidadeClima(){
             }
             $previsao = array();
             array_push($hoje, $recomendacaoHoje);
-            $hotspots["hotspot"][$i]["recomedacao"] = $hoje;
+            $hotspots["hotspot"][$i]["recomendacao"] = $hoje;
             for($j = 1; $j < count($tempo["results"]["forecast"]); $j++){
                 $previsaoData = array();
                 $diaSemana = $tempo["results"]["forecast"][$j]["weekday"];
@@ -95,7 +95,7 @@ function recomendarCidadeClima(){
                 }
                 array_push($previsao, $previsaoData);
             }
-            $hotspots["hotspot"][$i]["recomedacaoFutura"] = $previsao;
+            $hotspots["hotspot"][$i]["recomendacaoFutura"] = $previsao;
         }
         http_response_code(200);
         echo json_encode($hotspots, JSON_UNESCAPED_UNICODE);
