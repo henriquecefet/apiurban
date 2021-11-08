@@ -26,7 +26,7 @@ function lerCidades(){
   	}
   function lerHotspots(){
     let cidade = localStorage.getItem("cidade");
-    let link = "https://apiurban.herokuapp.com/api.php?funcao=recomendarCidadeClimaCovid&cidade="+cidade;
+    let link = "https://apiurban.herokuapp.com/api.php?funcao=recomendarCidadeClima&cidade="+cidade;
     var settings = {
               "url": link,
                "method": "GET",
@@ -44,9 +44,6 @@ function lerCidades(){
                    let id = adicionarDiv(pai, jx.hotspot[i].nome, "card-body");
                    adicionarImagem(id,jx.hotspot[i].imagem, "200px", "320px");
                    adicionarParagrafo(id, jx.hotspot[i].nome);
-                   adicionarParagrafo(id, "Situação da pandemia:");
-                   adicionarParagrafo(id, "Crescimento diário de casos: "+parseFloat(jx.situacao_covid.crescimento_casos.toFixed(2))+"%");
-                   adicionarParagrafo(id, "Crescimento diário de óbitos: "+parseFloat(jx.situacao_covid.crescimento_mortes.toFixed(2))+"%");
                    adicionarParagrafo(id, "Recomendações para os próximos dias:");
                    for(let j = 0; j<jx.hotspot[i].recomendacaoFutura.length; j++){
                       adicionarParagrafo(id, jx.hotspot[i].recomendacaoFutura[j][0]+" - "+jx.hotspot[i].recomendacaoFutura[j][1]);
