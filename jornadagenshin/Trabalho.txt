@@ -1,0 +1,5 @@
+Atividade 1: relógio.
+Atividade 2: jogo da memória.
+Atividade 3: jogo da forca.
+Atividade 4: quiz feito com Vue.
+Atividade 4: fogos de artificio.
