@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "bandName": "The Fratellis",
+        "listeners": 2905448
+    },
+    {
+        "id": 2,
+        "bandName": "The Beatles",
+        "listeners": 25078189
+    },
+    {
+        "id": 3,
+        "bandName": "Coldplay",
+        "listeners": 57056797
+    },
+    {
+        "id": 4,
+        "bandName": "The Last Shadow Puppets",
+        "listeners": 57056797
+    },
+    {
+        "id": 5,
+        "bandName": "Royal Blood",
+        "listeners": 3139151
+    },
+    {
+        "id": 6,
+        "bandName": "fun.",
+        "listeners": 7675609
+    },
+    {
+        "id": 7,
+        "bandName": "The White Stripes",
+        "listeners": 7675609
+    },
+    {
+        "id": 8,
+        "bandName": "Cage The Elephant",
+        "listeners": 11033169
+    },
+    {
+        "id": 9,
+        "bandName": "The Vines",
+        "listeners": 959403
+    },
+    {
+        "id": 10,
+        "bandName": "Blur",
+        "listeners": 7448252
+    },
+    {
+        "id": 11,
+        "bandName": "The Hives",
+        "listeners": 2511948
+    },
+    {
+        "id": 12,
+        "bandName": "Imagine Dragons",
+        "listeners": 55404938
+    },
+    {
+        "id": 13,
+        "bandName": "Jet",
+        "listeners": 4273514
+    },
+    {
+        "id": 14,
+        "bandName": "Foster the People",
+        "listeners": 12128598
+    },
+    {
+        "id": 15,
+        "bandName": "The Black Keys",
+        "listeners": 6428972
+    },
+    {
+        "id": 16,
+        "bandName": "The Clash",
+        "listeners": 9078357
+    },
+    {
+        "id": 17,
+        "bandName": "The Strokes",
+        "listeners": 9829024
+    },
+    {
+        "id": 18,
+        "bandName": "The Raconteurs",
+        "listeners": 2651286
+    },
+    {
+        "id": 19,
+        "bandName": "Panic! At The Disco",
+        "listeners": 18474993
+    },
+    {
+        "id": 20,
+        "bandName": "The Turtles",
+        "listeners": 2747494
+    }
+]
