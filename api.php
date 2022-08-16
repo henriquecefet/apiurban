@@ -83,7 +83,7 @@ function recomendarCidadeClima(){
                 array_push($previsaoData, $diaSemana." (".$data.")");
                 array_push($previsaoData, $descricao);
                 $condicao = $tempo["results"]["forecast"][$j]["condition"];
-                if($hotspots["hotspot"][$i]["ar-livre"] == t){
+                if($hotspots["hotspot"][$i]["ar-livre"] == "t"){
                     if($condicao == "storm" || $condicao == "hail" || $condicao == "rain" ){
                         array_push($previsaoData, "Não recomendado");
                     }
@@ -94,7 +94,7 @@ function recomendarCidadeClima(){
                       array_push($previsaoData, "Recomendado");
                     }
                 }
-                elseif($hotspots["hotspot"][$i]["ar-livre"] == f){
+                elseif($hotspots["hotspot"][$i]["ar-livre"] == "f"){
                     array_push($previsaoData, "Recomendado");
                 }
                 array_push($previsao, $previsaoData);
