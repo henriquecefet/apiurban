@@ -7,6 +7,10 @@ $GLOBALS['taxaFechadaAlta'] = 0.01;
 $GLOBALS['taxaFechadaMedia'] = 0.006;
 $GLOBALS['taxaAbertaAlta'] = 0.02;
 $GLOBALS['taxaAbertaMedia'] = 0.012;
+
+$GLOBALS['t'] = "t";
+$GLOBALS['f'] = "f";
+
 if(isset($_GET['funcao'])){
     $funcao = $_GET['funcao'];
     switch ($funcao) {
